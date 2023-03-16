@@ -1,3 +1,3 @@
 # Fashionshop
-Reactjd
+Reactjs
 Spring boot MVC
