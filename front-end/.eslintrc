@@ -1,0 +1,7 @@
+{
+    "extends": ["react-app"],
+    "plugins": ["react"],
+    "rules": {
+      "no-console": "warn"
+    }
+  }

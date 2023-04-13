@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["dom", "dom.iterable", "esnext", "es2015", "es2017"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": false,
+        "jsx": "react-jsx",
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "target/classes/static/app",
+        "checkJs": false,
+        "baseUrl": "./",
+        "importHelpers": false,
+        "downlevelIteration": true,
+        "types": ["jest"]
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"],
+    "paths": {
+        "tslib" : ["node_modules/tslib/tslib.d.ts"]
+    }
+}
