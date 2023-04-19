@@ -1,0 +1,183 @@
+{
+    "header": {
+        "title": "Header ahihi"
+    },
+    "test": {
+        "name": "ahihi vi"
+    },
+    "error": {
+        "http": {
+            "404": "Page not found"
+        },
+        "invalid_information": "Thông tin không hợp lệ",
+        "otp_invalid": "Mã OTP không hợp lệ"
+    },
+    "invalidToken": "Invalid Token!",
+    "common": {
+        "validateRequired": "* Trường bắt buộc nhập",
+        "validateMinLength": "* Độ dài tối thiểu {{min}} ký tự",
+        "validateMaxLength": "* Độ dài tối đa {{max}} ký tự",
+        "created": "Tạo mới dữ liệu thành công",
+        "updated": "Cập nhật dữ liệu thành công",
+        "deleted": "Xóa dữ liệu thành công",
+        "actionFail": "Thao tác không thành công",
+        "actionSuccess": "Thao tác thành công",
+        "recordDeleted": "Bản ghi đã bị xóa",
+        "mustSelect": "--- Hãy chọn ---",
+        "select": "--- Chọn ---",
+        "selectAll": "--- Chọn tất cả ---",
+        "dataNotFound": "Không tìm thấy dữ liệu",
+        "confirm": "Xác nhận",
+        "confirmDelete": "Bạn có chắc chắn muốn xóa bản ghi này?",
+        "confirmSaveOrUpdate": "Bạn có chắc chắn muốn lưu bản ghi này?",
+        "acceptLabel": "Đồng ý",
+        "rejectLabel": "Hủy",
+        "addLabel": "Thêm mới",
+        "saveLabel": "Lưu lại",
+        "cancelLabel": "Hủy",
+        "actionLabel": "Thao tác",
+        "searchLabel": "Tìm kiếm",
+        "deleteLabel": "Xóa",
+        "updateLabel": "Cập nhật",
+        "viewLabel": "Xem chi tiết",
+        "closeLabel": "Đóng",
+        "confirmLabel": "Xác nhận",
+        "notify": "Thông báo",
+        "searchInfo": "Thông tin tìm kiếm",
+        "rowNum": "STT",
+        "currentPageReportTemplate": "Tìm thấy {totalRecords}, hiển thị từ {first} tới {last}",
+        "invalidCredential": "Đăng nhập thất bại",
+        "collapsed": "Thu gọn",
+        "expand": "Mở rộng",
+        "export": "Xuất báo cáo",
+        "selectedItemsLabel": "{0} giá trị được chọn",
+        "yes": "Có",
+        "no": "Không",
+        "male": "Nam",
+        "female": "Nữ",
+        "haveAsset": "Có tài sản",
+        "noAsset": "Không có tài sản",
+        "province": "Tỉnh/Thành phố",
+        "district": "Quận/Huyện",
+        "ward": "Phường/Xã",
+        "apartmentNumber": "Số nhà/ngõ/phố",
+        "permanentAddress": "Địa chỉ thường trú",
+        "currentAddress": "Địa chỉ hiện tại",
+        "sendSuccess": "Gửi thông tin thành công",
+        "add": "Thêm",
+        "month": "Tháng",
+        "cancel": "Hủy bỏ",
+        "continue": "Tiếp tục",
+        "save": "Lưu lại",
+        "nextPage": "Trang sau",
+        "homePage": "Trang chủ",
+        "skip": "Bỏ qua",
+        "sendRequire": "Gửi yêu cầu",
+        "previousPage": "Trang trước",
+        "complete": "Hoàn thành",
+        "resetLabel": "Làm mới",
+        "exportExcel": "Xuất excel",
+        "deleteAll": "Xóa tất cả",
+        "token": {
+            "expired": "Phiên làm việc đã hết hạn. Vui lòng đăng nhập lại",
+            "invalid": "Xác thực tài khoản thất bại. Vui lòng đăng nhập lại"
+        },
+        "account": {
+            "invalid": {
+                "verify": "Tài khoản hoặc mật khẩu không chính xác"
+            }
+        },
+        "cancel.success": "Đơn hàng được hủy thành công",
+        "action.success": "Thao tác thành công",
+        "validateMinNumber": "* Giá trị tối thiểu phải lớn hơn hoặc bằng {{min}}",
+        "validateMaxNumber": "* Giá trị tối đa phải nhỏ hơn hoặc bằng {{max}}",
+        "action.error": "Thao tác thất bại"
+    },
+    "share": {
+        "logout": "Đăng xuất",
+        "setting": "Thiết lập",
+        "profile": "Thông tin cá nhân"
+    },
+    "login": {
+        "signIn": "Đăng nhập",
+        "signInOther": " với tài khoản khác."
+    },
+    "category": {
+        "categoryCode": "Mã danh mục",
+        "name": "Tên danh mục",
+        "categoryParent": "Danh mục cha",
+        "description": "Ghi chú",
+        "addCategory": "Thêm danh mục",
+        "addCategoryExcel": "Thêm danh mục bằng excel",
+        "managerProduct": "Quản lý sản phẩm",
+        "manageCategory": "Quản lý danh mục"
+    },
+    "product": {
+        "productCode": "Mã sản phẩm",
+        "name": "Tên sản phẩm",
+        "category": "Danh mục sản phẩm",
+        "image": "Ảnh sản phẩm",
+        "description": "Mô tả",
+        "addProduct": "Thêm sản phẩm",
+        "addProductExcel": "Thêm sản phẩm bằng excel",
+        "managerProduct": "Quản lý sản phẩm",
+        "manageProduct": "Quản lý sản phẩm",
+        "importPrice": "Giá nhập",
+        "price": "Giá bán",
+        "properties": "Thuộc tính",
+        "attributeName": "Tên thuộc tính",
+        "value": "Giá trị",
+        "quantity": "Số lượng",
+        "mass": "Trọng lượng",
+        "size": "Kích cỡ",
+        "color": "Màu sắc"
+    },
+    "admin": {
+        "login": {
+            "title": "Đăng nhập trang quản trị Zune",
+            "signIn": "Đăng nhập",
+            "username": "Tài khoản",
+            "password": "Mật khẩu",
+            "authFailed": "Tài khoản hoặc mật khẩu không chính xác",
+            "success": "Đăng nhập thành công"
+        }
+    },
+    "organization": {
+        "titleAdd": "Thêm mới danh mục",
+        "titleEdit": "Cập nhật danh mục",
+        "titleList": "Danh sách danh mục",
+        "code": "Mã",
+        "name": "Tên",
+        "parentId": "Danh mục cha",
+        "isActive": "Hoạt động",
+        "description": "Mô tả"
+    },
+    "orgSelector": {
+        "title": "Chọn danh mục",
+        "select": "Chọn",
+        "code": "Mã danh mục",
+        "name": "Tên danh mục",
+        "inputName": "Nhập tên danh mục",
+        "inputCode": "Nhập mã danh mục"
+    },
+    "color": {
+        "titleList": "Quản lý màu sắc",
+        "titleAdd": "Thêm mới màu sắc",
+        "titleEdit": "Cập nhật màu sắc",
+        "name": "Tên màu sắc",
+        "code": "Mã màu sắc",
+        "addColor": "Thêm màu sắc",
+        "addColorExcel": "Thêm màu sắc bằng Excel",
+        "manageColor": "Quản lý màu sắc"
+    },
+    "size": {
+        "titleList": "Quản lý kích cỡ",
+        "titleAdd": "Thêm mới kích cỡ",
+        "titleEdit": "Cập nhật kích cỡ",
+        "addSize": "Thêm kích cỡ",
+        "addSizeExcel": "Thêm kích cỡ bằng Excel",
+        "manageSize": "Quản lý kích cỡ",
+        "code": "Mã kích cỡ",
+        "name": "Tên kích cỡ"
+    }
+}

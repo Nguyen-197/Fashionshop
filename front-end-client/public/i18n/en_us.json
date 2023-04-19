@@ -1,0 +1,34 @@
+{
+    "header": {
+        "title": "Header ahihi"
+    },
+    "test": {
+        "name": "ahihi vi"
+    },
+    "error": {
+        "http": {
+            "404": "Page not found"
+        }
+    },
+    "common": {
+        "created": "Tạo mới dữ liệu thành công",
+        "updated": "Cập nhật dữ liệu thành công",
+        "deleted": "Xóa dữ liệu thành công",
+        "mustSelect": "--- Hãy chọn ---",
+        "select": "--- Chọn ---",
+        "selectAll": "--- Chọn tất cả ---",
+        "dataNotFound": "Không tìm thấy dữ liệu",
+        "confirm": "Xác nhận",
+        "confirmDelete": "Bạn có chắc chắn muốn xóa bản ghi này?",
+        "acceptLabel": "Đồng ý",
+        "rejectLabel": "Hủy",
+        "addLabel": "Thêm mới",
+        "saveLabel": "Lưu lại",
+        "cancelLabel": "Hủy",
+        "actionLabel": "Thao tác",
+        "searchLabel": "Tìm kiếm",
+        "searchInfo": "Thông tin tìm kiếm",
+        "rowNum": "STT",
+        "currentPageReportTemplate": "Hiển thị từ {first} tới {last} của {totalRecords}"
+    }
+}

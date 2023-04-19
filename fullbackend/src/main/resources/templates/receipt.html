@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        h1 {
+            color: #25a7e7;
+            text-align: center;
+        }
+        .receipt-header {
+            width: 100%;
+        }
+        .receipt {
+            width: 100%;
+        }
+        .receipt, .receipt th, .receipt td {
+            border: 1px solid #25a7e7;
+            border-collapse: collapse;
+        }
+        .receipt th {
+            background-color: #25a7e7;
+            color: white;
+        }
+        .total {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<h1>Hóa đơn online</h1>
+<div>
+    <table class="receipt-header">
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <th>Thông tin hóa đơn:</th>
+                    </tr>
+                    <tr>
+                        <td th:text="'Họ và tên: ' + ${order.fullName}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Số điện thoại: ' + ${order.phoneNumber}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Địa chỉ nhận hàng: ' + ${order.addressDetail} + ${order.addressName}"></td>
+                    </tr>
+                    <tr>
+                        <td th:text="'Ngày mua : ' + ${order.createDate}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<br />
+<table class="receipt">
+    <tr>
+        <th>TT</th>
+        <th>Mã sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Kích thước</th>
+        <th>Màu sắc</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Thành tiền</th>
+    </tr>
+    <tr th:each="item, iterStat: ${billRespons}">
+        <td th:text="${iterStat.index + 1}"></td>
+        <td th:text="${item.idProductDetail}"></td>
+        <td th:text="${item.productName}"></td>
+        <td th:text="${item.sizeName}"></td>
+        <td th:text="${item.colorName}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.price * item.quantity}"></td>
+    </tr>
+</table>
+</body>
+</html>

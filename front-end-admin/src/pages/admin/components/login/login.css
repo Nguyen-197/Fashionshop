@@ -1,0 +1,90 @@
+.wrap-login__wrap {
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    background-image: url("../../../../app/content/images/admin-bg-login.jpg");
+}
+.height-100vh {
+    height: 100vh;
+}
+.signup-container {
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+        0 1px 10px 0 rgb(0 0 0 / 12%);
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch flex-start;
+    align-items: stretch;
+    flex: 1 1 60%;
+    max-width: 60%;
+}
+.signup-container .left,
+.signup-container .right {
+    background-color: #fff;
+    position: relative;
+    color: #fff;
+    padding: 35px;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex: 1 1 50%;
+    max-width: 50%;
+}
+.signup-container .left:before {
+    content: "";
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.signup-container .left > div {
+    z-index: 2;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+.signup-container .left > div img {
+    max-width: 100%;
+}
+.signup-container .right form,
+.signup-container .right form input {
+    width: 100%;
+}
+.signup-container .right form .uname {
+    margin-bottom: 24px;
+}
+.grey-100 {
+    background-color: #f5f5f5 !important;
+}
+.signup-container .branch-heading {
+    margin-bottom: 30px;
+}
+.signup-container .branch-heading h3 {
+    margin: 8px 0 0;
+    font-weight: 700 !important;
+    color: #000;
+    font-size: 16px;
+}
+.branch-heading .text-muted {
+    color: rgba(0, 0, 0, 0.54) !important;
+    margin: 0 !important;
+}
+.signup-container .button-group {
+    margin-top: 20px;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
