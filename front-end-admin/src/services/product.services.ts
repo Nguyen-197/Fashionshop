@@ -3,7 +3,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import axios from 'axios';
 export class ProductService extends BaseService {
     constructor() {
-        super('ZUNE', 'product');
+        super('YUNO', 'product');
     }
 
     public async saveOrUpdate(formData) {

@@ -10,6 +10,8 @@ export class BaseService {
     constructor(service: any = "YUNO", module: any) {
         const servicesURL = `REACT_APP_${service}_SERVICE_URL`
         this.baseUrl = `${process?.env[servicesURL]}${CONFIG.API_PATH[module]}`;
+        console.log("baseUrl", this.baseUrl);
+        
     }
     /**
      * convertDataObject

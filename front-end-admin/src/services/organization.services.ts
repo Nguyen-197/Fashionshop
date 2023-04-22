@@ -4,7 +4,7 @@ import { CommonUtil } from '../utils/common-util';
 
 export class OrganizationService extends BaseService {
     constructor() {
-        super('ZUNE', 'category');
+        super('YUNO', 'category');
     }
 
     public initTreeOrg() {

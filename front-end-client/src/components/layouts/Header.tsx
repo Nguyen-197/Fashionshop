@@ -195,7 +195,24 @@ const Header = (props: IHeaderProps) => {
                     clickToClose={clickToClose}
                 /> }
                 <div className='container-drop'>
-                    
+                    <div className="container d-flex">
+                        { treeDataCategory.map((item, index) => {
+                            return (
+                                <div className="col-md-2 col-sm-2" key={index}>
+                                    {!item.parentId && <a href='#' className='parent-label'>{item.name}</a> }
+                                    { item.listCategoryChild.length > 0 &&
+                                     <ul>
+                                        {item.listCategoryChild.map((itemChild , indexChild) => {
+                                            return (
+                                                <li key={indexChild}><a href='#'>{itemChild.name}</a></li>
+                                            )
+                                        })}
+                                     </ul> 
+                                     }
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             </div> 
         </>

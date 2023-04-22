@@ -281,7 +281,6 @@ a.active::after {
 .banner-container {
     width: 100%;
     height: 57vh;
-    margin-top: 100px;
 }
 .banner-first,
 .banner-second,
@@ -501,7 +500,6 @@ footer .copyright {
     padding-left: 15px;
     padding-right: 15px;
     text-align: left;
-    margin-top: 100px;
 }
 .style-news .style-news-content-wrapper {
     margin: 0 auto;
@@ -2886,18 +2884,39 @@ img {
     width: 3rem;
 }
 .container-drop {
-    position: absolute;
+    position: fixed;
     background: #fff;
     top: 100px;
     left: 0;
     width: 100vw;
-    height: 0;
-    transition: height ease-in-out 0.3s;
+    transform: rotate3d(1,0,0,-90deg);
+    transform-origin: 0 0 0;
+    transition: all .2s ease;
+    height: 80vh;
 }
 .menu:has(> .menu-item.drop-item:hover) {
     font-size: 13px;
 }
-.menu:has(> .menu-item.drop-item:hover) ~ .container-drop {
-    height: 80vh;
-    transition: height ease-in-out 0.3s;
+.menu:has(> .menu-item.drop-item:hover) ~ .container-drop, .container-drop:hover {
+
+    transform: rotate3d(0,0,0,0deg);
+}
+.container-drop .container {
+    margin-top: 16px;
+}
+.container-drop .parent-label {
+    text-transform: uppercase;
+}
+.container-drop ul {
+    list-style: none;
+    padding: 0;
+}
+.container-drop a{
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 18px;
+}
+.mt-100 {
+    margin-top: 100px;
 }

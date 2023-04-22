@@ -4,7 +4,7 @@ import axios from 'axios';
 import _ from 'lodash';
 export class ProductService extends BaseService {
     constructor() {
-        super('ZUNE', 'product-details');
+        super('YUNO', 'product-details');
     }
     public async saveOrUpdate(formData) {
         formData = CommonUtil.convertFormFile(formData);

@@ -5,7 +5,7 @@ import { BaseService } from './base.services';
 
 export class OrderDetailService extends BaseService {
     constructor() {
-        super('ZUNE', 'orderDetail');
+        super('YUNO', 'orderDetail');
     }
 
     public async getDetailOrder(orderId) {

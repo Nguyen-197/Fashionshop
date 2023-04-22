@@ -6,7 +6,7 @@ import _ from 'lodash';
 export class BaseService {
     protected baseUrl: String;
 
-    constructor(service: any = "ZUNE", module: any) {
+    constructor(service: any = "YUNO", module: any) {
         const servicesURL = `REACT_APP_${service}_SERVICE_URL`
         this.baseUrl = `${process?.env[servicesURL]}${CONFIG.API_PATH[module]}`;
     }

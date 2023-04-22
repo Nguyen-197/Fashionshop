@@ -4,7 +4,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import { GHN_TOKEN, SHOP_ID } from 'src/@types/constants';
 export class UserService extends BaseService {
     constructor() {
-        super('ZUNE', 'account');
+        super('YUNO', 'account');
     }
     public getprovince() {
         return axios.get(`https://dev-online-gateway.ghn.vn/shiip/public-api/master-data/province`, {

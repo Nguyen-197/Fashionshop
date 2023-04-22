@@ -3,7 +3,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import axios from 'axios';
 export class AddressService extends BaseService {
     constructor() {
-        super('ZUNE', 'address');
+        super('YUNO', 'address');
     }
     public findByUserId(userId) {
         return axios.get(`${this.baseUrl}/find-all-by-user/${userId}`);

@@ -23,7 +23,11 @@ import com.portal.core.module.service.CategoryService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yuno_shop
@@ -51,6 +55,29 @@ public class CategoryController extends CRUDController<Category, CategoryForm> {
 
     @GetMapping("/get-root")
     private Response getRootTreeCategory() {
+        try {
+            List<Category> lstCategoies = categoryService.findAll();
+            List<Category> newListCategories = new ArrayList<>();
+            for (Category category : lstCategoies) {
+            	if(CommonUtils.NVL(category.getParentId()) <= 0) {
+            		List<Category> lstCategoieChild = new ArrayList<>();	
+            		for (Category category2 : lstCategoies) {
+                    	if(category.getId().equals(category2.getParentId())) {
+                    		lstCategoieChild.add(category2);
+                    	}
+                    }
+            		category.setListCategoryChild(lstCategoieChild);
+            		newListCategories.add(category);
+            	}
+            }
+            return Response.success().withData(newListCategories);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return  Response.error(Constants.RESPONSE_CODE.SERVER_ERROR).withMessage("network error");
+        }
+    }
+    @GetMapping("/get-root-v2")
+    private Response getRootTreeCategoryV2() {
         try {
             List<CategoryForm> lstCategoies = categoryService.getRootCategory(filterData);
             return Response.success().withData(lstCategoies);

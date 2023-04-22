@@ -35,7 +35,7 @@ const TextControl = forwardRef((props: ITextControlProps, ref: any) => {
     return (
         <>
             {props.labelKey && props.showLabel ? <label className={`control-label ${props.required ? 'required' : ''} `} htmlFor={props.property}>{props.labelKey}</label> : ''}
-            <div className={`form-control-wrap ${focusChange ? 'is-focus-zune' : ''}`}>
+            <div className={`form-control-wrap ${focusChange ? 'is-focus-yuno' : ''}`}>
                 <InputText
                     {...restProps}
                     id={controlId}

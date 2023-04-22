@@ -3,7 +3,7 @@ import { BaseService } from './base.services';
 
 export class AccountService extends BaseService {
     constructor() {
-        super('ZUNE', 'auth');
+        super('YUNO', 'auth');
     }
 
     public login(formData) {

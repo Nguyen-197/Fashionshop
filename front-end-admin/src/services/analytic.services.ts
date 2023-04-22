@@ -3,7 +3,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import axios from 'axios';
 export class AnalyticService extends BaseService {
     constructor() {
-        super('ZUNE', 'analyticService');
+        super('YUNO', 'analyticService');
     }
     public async reportStatusOrder(date: any) {
         const url = `${this.baseUrl}/total-status-order`;

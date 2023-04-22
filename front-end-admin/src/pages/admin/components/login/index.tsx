@@ -12,7 +12,7 @@ import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password'
 import { useFormik } from "formik";
 import BgLogin from '../../../../app/content/images/login_illustration.png';
-import BranchLogo from '../../../../app/content/images/zune-logo.png';
+import BranchLogo from '../../../../app/content/images/logo.png';
 import { setAuthenticated } from '../../../../reducers/authentication';
 export interface ILoginIndexProps extends StateProps, DispatchProps {
 }

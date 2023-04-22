@@ -1543,16 +1543,16 @@ form .form-control-wrap {
 .p-password-input {
     width: 100%;
 }
-.cards-zune {
+.cards-yuno {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     border-radius: 8px;
 }
-.cards-zune .header-card {
+.cards-yuno .header-card {
     font-size: 1.125rem;
     font-weight: 500;
     line-height: 20px;
 }
-.cards-zune.staff-info {
+.cards-yuno.staff-info {
     flex: 1;
 }
 .mnh-250 {
@@ -1567,7 +1567,7 @@ form .form-control-wrap {
     height: 250px;
     z-index: 100;
 }
-.is-focus-zune + .props-dropdown {
+.is-focus-yuno + .props-dropdown {
     display: block;
 }
 .p-dropdown-items {
@@ -2292,13 +2292,13 @@ td.item-center {
     font-size: 24px;
     margin-right: 12px;
 }
-.order-return .zunexz-switch {
+.order-return .yunoxz-switch {
     display: flex;
 }
-.order-return .zunexz-switch .p-inputswitch {
+.order-return .yunoxz-switch .p-inputswitch {
     /* margin-right: 12px; */
 }
-.order-return .page-info .zunexz-checkbox {
+.order-return .page-info .yunoxz-checkbox {
     display: flex;
     align-items: center;
 }
@@ -2329,7 +2329,7 @@ td.item-center {
     text-align: right;
 }
 .p-inputtext,
-.zunexz-dropdown .p-inputtext {
+.yunoxz-dropdown .p-inputtext {
     padding: 0.536rem 0.75rem !important;
 }
 .page-info-body .form-control-wrap {

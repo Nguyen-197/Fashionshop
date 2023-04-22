@@ -176,7 +176,7 @@ const CustomerForm = forwardRef((props: ICustomerFormProps, ref: any) => {
             id: dataTemp.id || null,
             fullName: dataTemp.fullName,
             email: dataTemp.email,
-            password: '',
+            password: '123456a@',
             phoneNumber: dataTemp.phoneNumber,
             role: {
                 id: dataTemp.role.id ? dataTemp.role.id : 3,

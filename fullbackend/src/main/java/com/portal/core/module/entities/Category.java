@@ -46,4 +46,7 @@ public class Category {
 
     @Transient
     private String parentName;
+    
+    @Transient
+    private List<Category> listCategoryChild;
 }

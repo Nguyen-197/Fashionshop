@@ -134,7 +134,7 @@
     },
     "admin": {
         "login": {
-            "title": "Đăng nhập trang quản trị Zune",
+            "title": "Đăng nhập trang quản trị Yuno",
             "signIn": "Đăng nhập",
             "username": "Tài khoản",
             "password": "Mật khẩu",

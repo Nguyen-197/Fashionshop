@@ -6,7 +6,7 @@ import AppInlineMenu from './app-inline-menu';
 import { Ripple } from 'primereact/ripple';
 import { Badge } from 'primereact/badge';
 
-import LogoLight from '../../../app/content/images/zune-logo.png';
+import LogoLight from '../../../app/content/images/logo.png';
 import LogoAppLight from '../../../app/content/images/appname-light.png';
 const AppSubmenu = (props) => {
 
@@ -192,10 +192,6 @@ const AppMenu = (props) => {
             <div className="menu-logo">
                 <button className="logo p-link">
                     <img style={{'filter': 'brightness(0) invert(1)'}} src={LogoLight} alt="logo" onClick={() => history.push('/admin/dashboard')} />
-                </button>
-                <button className="app-name p-link" style={{'color': '#fff'}}>
-                    <h2 className="mb-0 ml-3">ZUNE.XZ</h2>
-                    {/* <img src={LogoAppLight} alt="app-name" onClick={() => history.push('/admin/dashboard')} /> */}
                 </button>
                 <button className="menu-pin p-link" onClick={props.onToggleMenu}>
                     {isOverlay() && <span className="pi pi-times"></span>}

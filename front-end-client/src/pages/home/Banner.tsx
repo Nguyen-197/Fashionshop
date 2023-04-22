@@ -41,10 +41,10 @@ const Banner = (props) => {
     }
 
     return (
-        <div className="carousel slide flex-center">
-            <button className="carousel-control-prev" onClick={onPrev}>
+        <div className="carousel slide flex-center mt-100">
+            {/* <button className="carousel-control-prev" onClick={onPrev}>
                 <i className="chevron-left"></i>
-            </button>
+            </button> */}
             <div className="banner-container">
                 <div className={classNames("banner-first flex-center", { hide: currentBanner !== 1 })}>
                 </div>
@@ -55,9 +55,9 @@ const Banner = (props) => {
                 <div className={classNames("banner-four flex-center", { hide: currentBanner !== 4 })}>
                 </div> */}
             </div>
-            <button className="carousel-control-next" onClick={onNext}>
+            {/* <button className="carousel-control-next" onClick={onNext}>
                 <i className="chevron-right"></i>
-            </button>
+            </button> */}
             <div className="navigation-wrapper">
                 <ul>
                     <li onClick={() => onSelected(1)} className={classNames("dots-item", { active: currentBanner == 1 })}>

@@ -4,7 +4,7 @@ import { CommonUtil } from '../utils/common-util';
 
 export class FileStorageService extends BaseService {
     constructor() {
-        super('ZUNE', 'fileStorage');
+        super('YUNO', 'fileStorage');
     }
 
     public uploadFile(formData: any) {

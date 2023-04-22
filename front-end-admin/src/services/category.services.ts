@@ -3,7 +3,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import axios from 'axios';
 export class CategoryService extends BaseService {
     constructor() {
-        super('ZUNE', 'category');
+        super('YUNO', 'category');
     }
 
     public initTreeCategory() {

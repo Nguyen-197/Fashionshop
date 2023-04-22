@@ -628,7 +628,7 @@ const OrderReturnForm = (props: IOrderFormProps) => {
                                 <i className="bx bx-refresh"></i>
                                 <span>Đổi hàng</span>
                             </div>
-                            <div className="zunexz-switch">
+                            <div className="yunoxz-switch">
                                 <InputSwitch inputId="has-return" checked={hasReturn} onChange={(event) => setHasReturn(event.value)} />
                                 <label className="label-title" htmlFor="has-return">Đơn hàng có đổi hàng</label>
                             </div>
@@ -870,7 +870,7 @@ const OrderReturnForm = (props: IOrderFormProps) => {
                                 <i className='bx bxs-credit-card-alt'></i>
                                 <span>Hoàn tiền</span>
                             </div>
-                            <div className="zunexz-checkbox">
+                            <div className="yunoxz-checkbox">
                                 { calCustomerMustPay < 0 &&
                                     <>
                                         <Checkbox inputId="has-paid" checked={isPaid} onChange={e => setIsPaid(e.checked)} />
@@ -884,7 +884,7 @@ const OrderReturnForm = (props: IOrderFormProps) => {
                                 <i className="fa-solid fa-truck-fast" style={{ fontSize: "18px" }}></i>
                                 <span>Nhận hàng</span>
                             </div>
-                            <div className="zunexz-checkbox">
+                            <div className="yunoxz-checkbox">
                                 <Checkbox inputId="has-received" checked={isReceived} onChange={e => setIsReceived(e.checked)} />
                                 <label className="label-title" htmlFor="has-received">Đã nhận hàng trả lại</label>
                             </div>

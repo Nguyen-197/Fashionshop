@@ -5,7 +5,7 @@ import { BaseService } from './base.services';
 
 export class OrderReturnService extends BaseService {
     constructor() {
-        super('ZUNE', 'orderReturn');
+        super('YUNO', 'orderReturn');
     }
 
     public async search(formData: any, event?: any) {

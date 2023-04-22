@@ -372,9 +372,6 @@ const ProductContent = (props: IProductContentProps) => {
                     </div>
                 </div>
                 <div className="product-detail page-product__detail">
-                    <div className="heading">Chi tiết sản phẩm</div>
-                    <div className="content" dangerouslySetInnerHTML={{ __html: props?.product?.description?.replace(/\n/g, '<br />') }}>
-                    </div>
                     <div className="heading">Mô tả sản phẩm</div>
                     <div className="content" dangerouslySetInnerHTML={{ __html: props?.product?.description?.replace(/\n/g, '<br />') }}></div>
                     { similarProduct.length > 0 &&

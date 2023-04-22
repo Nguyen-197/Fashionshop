@@ -3,7 +3,7 @@ import { BaseService } from './base.services';
 
 export class SysMenuService extends BaseService {
     constructor() {
-        super('ZUNE', 'sys-menu');
+        super('YUNO', 'sys-menu');
     }
 
     public getMenu() {

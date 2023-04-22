@@ -3,7 +3,7 @@ import { CommonUtil } from 'src/utils/common-util';
 import axios from 'axios';
 export class SaleOffService extends BaseService {
     constructor() {
-        super('ZUNE', 'saleOffServices');
+        super('YUNO', 'saleOffServices');
     }
 
     public async findById(id: any) {
