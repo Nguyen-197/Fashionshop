@@ -1,88 +1,125 @@
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 import YunoLogo from 'src/assets/images/new-folder-image/logo/logo.png';
 const Footer = () => {
+    const [isCollapse, setIsCollapse] = useState(false);
+    const onCollapse = () => {
+        setIsCollapse(!isCollapse)
+    }
     return (
-        <>
-            <footer className="footer">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-xs-12 col-sm-4">
-                            <div className="img wow fadeInUp animated">
-                                <Link to="/home">
-                                    <img src={YunoLogo} alt="yuno-logo" />
-                                </Link>
+        <>  
+            <section id='sectionInfoFooter'>
+                <div className="container-fluid clearfix">
+                    <div className="innerInfoFooter clearfix row">
+                        <div className="col-xs-12 col-sm-4 site-animation">
+                            <h4>GỌI MUA HÀNG ONLINE (08:00 - 21: 00 mỗi ngày)</h4>
+                            <div className="infoContent">
+                                <p>
+                                    <span className="titleHotline">
+                                        <a href="tel:1800 1162" className="linkHotline">1800 1162</a>
+                                    </span>
+                                    <span className="moreInfoFooter">
+                                        Tất cả các ngày trong tuần (Trừ tết Âm Lịch)
+                                    </span>
+                                </p>
+                            </div>
+                            <h4 className="xxx">
+                                GÓP Ý & KHIẾU NẠI (08:30 - 20:30)
+                            </h4>
+                            <div className="infoContent">
+                                <p>
+                                    <span className="titleHotline">
+                                        <a href="tel:1800 1160" className="linkHotline">1800 1160</a>
+                                    </span>
+                                    <span className="moreInfoFooter">
+                                        Tất cả các ngày trong tuần (Trừ tết Âm Lịch)
+                                    </span>
+                                </p>
                             </div>
                         </div>
+                        <div className="col-xs-12 col-sm-4 site-animation">
+                            <h4>HỆ THỐNG SHOWROOM</h4>
+                            <ul><a href="#" className="link-showroom-home"><img src="https://file.hstatic.net/1000003969/file/chikh_ce44b1a9f11b4cbda1d4d319967d7932.jpg" alt="Store" /></a></ul>
+                        </div>
+                        <div className="col-xs-12 col-sm-4 site-animation">
+                            <h4>FANPAGE CỦA CHÚNG TÔI</h4>
+                            <ul><a href="#" className="link-showroom-home"><img src="https://file.hstatic.net/1000003969/file/700x330_bedaf891aac94104956f15c7e8f199b1.jpg" alt="Page" /></a></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer id='footerBottom' className="clearfix">
+                <div className="container-fluid clearfix">
+                    <div className="innerInfoFooter row">
                         <div className="col-xs-12 col-sm-4">
-                            <h3 className="wow fadeInUp animated">Hệ thống cửa hàng</h3>
-                            <ul className="list-unstyled info wow fadeInUp animated">
+                            <h4  onClick={onCollapse}>HỖ TRỢ KHÁCH HÀNG</h4>
+                            <ul style={{display: isCollapse ? 'block' : 'none'}}>
                                 <li>
-                                    <i className="fa fa-map-marker"></i>
-                                    Hà Nội: 131 Đông Các, Đống Đa
-                                    <br />
-                                    <i className="fa fa-map-marker"></i>
-                                    Hà Nội: Tầng M, Toà nhà B4 Kim Liên, Phạm Ngọc Thạch, Đống Đa
-                                    <br />
-                                    <i className="fa fa-map-marker"></i>
-                                    Đà Nẵng: 65 Nguyễn Văn Linh, Hải Châu 1
-                                    <br />
-                                    <i className="fa fa-map-marker"></i>
-                                    HCM: 411 Võ Văn Tần, P5, Q3
-                                    <br />
-                                    <i className="fa fa-map-marker"></i>
-                                    HCM: The New PlayGround Expand, Center Market Lê Lai, Q.1
-                                </li>
-                                <li>
-                                    <a href="tel:0987654321" title="0987654321">
-                                        <i className="fa fa-phone"></i>
-                                        0987654321
+                                    <a href="#" className="link-bottom">
+                                        Hướng dẫn chọn cỡ giày
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="mailto:webyuno0903@gmail.com" title="webyuno0903@gmail.com">
-                                        <i className="fa fa-envelope"></i>
-                                        yuno.shop@gmail.com
+                                    <a href="#" className="link-bottom">
+                                        Chính sách đổi trả
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="link-bottom">
+                                        Thanh toán giao nhận
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="link-bottom">
+                                        Câu hỏi thường gặp
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="link-bottom">
+                                        Chính sách bảo mật
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="link-bottom">
+                                        Chính sách khách hàng thân thiết
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" className="link-bottom">
+                                        Hướng dẫn mua hàng Online
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-xs-12 col-sm-4">
-                            <h3 className="wow fadeInUp animated">
-                                Theo dõi chúng tôi
-                            </h3>
-                            <ul className="list-unstyled social wow fadeInUp animated">
-                                <li>
-                                    <a href="https://www.facebook.com/yunozxvn/" title="Facebook" className="fb" target="_blank">
-                                        <i className="fa-brands fa-facebook-square"></i>
+                            <h4  onClick={onCollapse}>VỀ YUNO</h4>
+                            <ul style={{display: isCollapse ? 'block' : 'none'}}>
+                            <li>
+                                    <a href="#" className="link-bottom">
+                                        Liên hệ
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/yuno.zx/" title="Instagram" target="_blank">
-                                        <img src="https://yunozx.com/public/home/img/icon-isg.png" alt="Instagram" />
-                                        {/* <i className="fa-brands fa-instagram-square"></i> */}
+                                    <a href="#" className="link-bottom">
+                                        Giới thiệu
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.youtube.com/channel/UCklZKNakn7dv4Q8uc4SwpQw?view_as=subscriber" className="yt" title="Youtube" target="_blank">
-                                        <i className="fa-brands fa-youtube-square"></i>
+                                    <a href="#" className="link-bottom">
+                                        Tin tức Yuno
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://shopee.vn/yunozx" title="Shoppe" target="_blank">
-                                        <img src="https://yunozx.com/public/home/img/icon-shopee.png" alt="Shoppe" />
+                                    <a href="#" className="link-bottom">
+                                        Thông tin thời trang
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.tiktok.com/" title="Tiktop" target="_blank">
-                                        {/* <i className="fa-brands fa-tiktok"></i> */}
-                                        <img src="https://yunozx.com/public/home/img/icon-tiktok.png" alt="Tiktop" />
+                                    <a href="#" className="link-bottom">
+                                        Cơ hội làm việc tại Yuno
                                     </a>
                                 </li>
                             </ul>
-                            {/* <iframe width="364px" height="150px" src="https://www.facebook.com/v2.5/plugins/page.php?adapt_container_width=true&app_id=443271375714375&channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df156a87dd00c24c%26domain%3Dyunozx.com%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fyunozx.com%252Ff3a63c4ec5551c8%26relation%3Dparent.parent&container_width=679&height=150&hide_cover=false&href=https%3A%2F%2Fwww.facebook.com%2Fyunozxvn%2F&locale=en_US&sdk=joey&show_facepile=true&small_header=true&tabs=timeline&width=679" allowFullScreen frameBorder="0"></iframe> */}
-                        </div>
-                        <div className="col-xs-12 col-sm-12">
-                            <div className="copyright">© Copyright 2023 By NguyenNK. All right reserved</div>
                         </div>
                     </div>
                 </div>

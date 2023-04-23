@@ -217,7 +217,7 @@ default String buildGetDataQuery(ProductForm form, List<Object> paramList) {
     default DataTableResults<Product> getDatatablesProductNew(FilterData filterData, ProductForm form ) {
         List<Object> paramList = new ArrayList<>();
         String nativeQuery = buildGetDataQueryGetProductNew(form, paramList);
-        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 8);
+        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 16);
     }
 
     /**
@@ -230,7 +230,7 @@ default String buildGetDataQuery(ProductForm form, List<Object> paramList) {
     default DataTableResults<Product> getDatatablesProductSale(FilterData filterData, ProductForm form ) {
         List<Object> paramList = new ArrayList<>();
         String nativeQuery = buildGetDataQueryGetProductSale(form, paramList);
-        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 8);
+        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 16);
     }
 
     /**
@@ -243,7 +243,7 @@ default String buildGetDataQuery(ProductForm form, List<Object> paramList) {
     default DataTableResults<Product> getDatatablesProductBestSale(FilterData filterData, ProductForm form ) {
         List<Object> paramList = new ArrayList<>();
         String nativeQuery = buildQueryGetProductBestSale(form, paramList);
-        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 8);
+        return filterData.findPaginationQuery(nativeQuery, paramList, Product.class, 16);
     }
 
     @Modifying

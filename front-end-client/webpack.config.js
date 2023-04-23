@@ -29,6 +29,11 @@ module.exports = (env, agrv) => {
         new webpack.DefinePlugin({
             'process.env': JSON.stringify(process.env)
         }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
+          }),
     ];
     let prodPlugins = [
         ...basePlugins,
