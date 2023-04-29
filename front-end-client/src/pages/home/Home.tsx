@@ -22,7 +22,12 @@ const Home = (props: IHomeProps) => {
                     <ContentTab />
                     <HomeTab />
                     <div className="container-fluid">
-                        <OwlCarousel className='owl-theme' stagePadding={200} items={1} center touchDrag={false} autoplay pullDrag={false} loop margin={40} nav>
+                        <div className="heading-title text-center">
+                            <h2>Bộ Sưu Tập</h2>
+                        </div>
+                    </div>
+                    <div id="collection-slider">
+                        <OwlCarousel className='owl-theme' navText={['','']}  stagePadding={200} items={1} center touchDrag={false} autoplay pullDrag={false} loop margin={40} nav>
                             <div className='item position-relative'>
                                 <div className="videoWrapper">
                                     <a href="https://juno.vn/collections/imperfect-perfection-collection">

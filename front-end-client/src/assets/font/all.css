@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&subset=vietnamese');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+@font-face {
+	font-family: MuliDisplayVN;
+	font-weight: 400;
+	font-style: normal;
+	src: url('./MuliDisplayVN-Regular.ttf')
+}
+@font-face {
+	font-family: MuliDisplayVN;
+	font-weight: 500;
+	font-style: normal;
+	src: url('./MuliDisplayVN-SemiBold.ttf')
+}
+@font-face {
+	font-family: MuliDisplayVN;
+	font-weight: 700;
+	font-style: normal;
+	src: url('./MuliDisplayVN-Bold.ttf')
+}
+@font-face {
+	font-family: MuliDisplayVN;
+	font-weight: 900;
+	font-style: normal;
+	src: url('./MuliDisplayVN-Black.ttf')
+}
+
+@font-face {
+	font-family: MuliDisplayVN;
+	font-weight: 300;
+	font-style: normal;
+	src: url('./MuliDisplayVN-Light.ttf')
+}
+

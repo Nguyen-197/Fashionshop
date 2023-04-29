@@ -182,12 +182,12 @@ default String buildGetDataQuery(ProductForm form, List<Object> paramList) {
         String groupBy = " GROUP BY p.id ";
         StringBuilder strCondition = new StringBuilder(" WHERE 1 = 1 ");
         strCondition.append(" AND p.is_delete = 0 ");
-        CommonUtils.filter(form.getId(), strCondition, paramList, "id");
-        CommonUtils.filter(form.getCode(), strCondition, paramList, "code");
-        CommonUtils.filter(form.getName(), strCondition, paramList, "name");
-        CommonUtils.filter(form.getDescription(), strCondition, paramList, "description");
-        CommonUtils.filter(form.getIsDelete(), strCondition, paramList, "is_delete");
-        CommonUtils.filter(form.getIdCategory(), strCondition, paramList, "id_category");
+        CommonUtils.filter(form.getId(), strCondition, paramList, "p.id");
+        CommonUtils.filter(form.getCode(), strCondition, paramList, "p.code");
+        CommonUtils.filter(form.getName(), strCondition, paramList, "p.name");
+        CommonUtils.filter(form.getDescription(), strCondition, paramList, "p.description");
+        CommonUtils.filter(form.getIsDelete(), strCondition, paramList, "p.is_delete");
+        CommonUtils.filter(form.getIdCategory(), strCondition, paramList, "p.id_category");
         CommonUtils.filterStr(form.getListProductSize(), strCondition, paramList, "s.code");
         CommonUtils.filterStr(form.getListProductColor(), strCondition, paramList, "cl.code");
         CommonUtils.filterStr(form.getListProductCategory(), strCondition, paramList, "c.code");

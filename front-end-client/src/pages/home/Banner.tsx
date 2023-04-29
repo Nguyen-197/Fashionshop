@@ -41,7 +41,7 @@ const Banner = (props) => {
     }
 
     return (
-        <div className="carousel slide flex-center mt-100">
+        <div className="carousel slide flex-center mt-60">
             {/* <button className="carousel-control-prev" onClick={onPrev}>
                 <i className="chevron-left"></i>
             </button> */}

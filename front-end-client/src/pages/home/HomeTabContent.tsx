@@ -1,4 +1,4 @@
-import {useEffect, useState } from 'react';
+import {useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
 import Product from 'src/components/product';
 import { IRootState } from 'src/reducers';
@@ -6,7 +6,6 @@ import { Paginator } from 'primereact/paginator';
 import CategoryService from 'src/services/category.services';
 import SizeService from 'src/services/size.services';
 import ColorService from 'src/services/color.services';
-import { Tree } from 'primereact/tree';
 type HomeTabContent = StateProps & DispatchProps & {
     products: any;
     formSearch?: any;
@@ -20,11 +19,12 @@ const HomeTabContent = (props: HomeTabContent) => {
     const [treeDataColor, setTreeDataColor] = useState([]);
     const [dataSearch, setDataSearch] = useState({});
     const [loading, setLoading] = useState(false);
-    const [basicRows, setBasicRows] = useState(8);
+    const [basicRows, setBasicRows] = useState(16);
     const [selectedOrg, setSelectedOrg] = useState(null);
     const [selectedKey, setSelectedKey] = useState(null);
     const [selectedKeySize, setSelectedKeySize] = useState(null);
     const [selectedKeyColor, setSelectedKeyColor] = useState(null);
+    const [isToggleFilter, setIsToggleFilter] = useState(false);
     // const [datasource, setDatasource] = useState({}) as any;
     const convertTreeNode = (listOrg: Array<any>) => {
         if (!listOrg) {
@@ -116,34 +116,21 @@ const HomeTabContent = (props: HomeTabContent) => {
         loadDatasource();
     }, [])
     return (
-        <>
-        <div className="d-flex">
-            <div className="ml-4">
-                <h3>
-                    <i className="pi pi-filter-fill mr-3" style={{'fontSize': '0.9em'}}></i>
-                    Bộ lọc tìm kiếm
-                </h3>
-                <div>
-                    Lọc theo kích cỡ
-                </div>
-                <div className="tree-size">
-                    <Tree value={treeDataSize} selectionMode="checkbox" onExpand={loadOnExpand} loading={loading}
-                        selectionKeys={selectedKeySize}
-                        onSelectionChange={e => onChangeSize(e)}
-                    />
-                </div>
-                <div>
-                    Lọc theo màu
-                </div>
-                <div className="tree-size">
-                    <Tree value={treeDataColor} selectionMode="checkbox" onExpand={loadOnExpand} loading={loading}
-                        selectionKeys={selectedKeyColor}
-                        onSelectionChange={e => onChangeColor(e)}
-                    />
-                </div>
-            </div>
+        <> 
             <div className="container" style={{ marginBottom: '50px' }}>
                 <div>
+                    <div className='d-flex justify-content-end relative px-5'style={{ zIndex: '10' }}>
+                        <div className='relative select-filter' onClick={() =>setIsToggleFilter(!isToggleFilter)}>
+                            <span className='relative'>Bộ lọc <i style={{ top: '6px' }} className="ic-up ic-chevron"></i></span>
+                            { isToggleFilter &&
+                                <div className='popup-filter'>
+
+                                </div>
+                            }
+                        </div>
+                        <div></div>
+
+                    </div>
                     <div className="row">
                         { products?.data?.map((item, index) => {
                             return (
@@ -174,7 +161,6 @@ const HomeTabContent = (props: HomeTabContent) => {
                     </div>
                 </div>
             </div>
-        </div>
         </>
     )
 }

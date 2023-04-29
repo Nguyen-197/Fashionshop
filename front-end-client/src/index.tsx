@@ -24,6 +24,7 @@ import 'primeflex/primeflex.css';
 import 'prismjs/themes/prism-coy.css';
 import './assets/scss/main.scss';
 import './App.css';
+import './assets/font/all.css';
 
 const devTools = process && process.env.NODE_ENV === 'development' ? <Devtools /> : null;
 

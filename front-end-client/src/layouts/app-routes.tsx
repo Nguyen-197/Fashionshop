@@ -14,8 +14,9 @@ import ProductDetail from 'src/pages/product-detail';
 import Checkout from 'src/pages/Checkout/Checkout';
 import MenuPrivateRoute from 'src/components/auth/MenuPrivateRoute';
 import Purchase from 'src/pages/purchase/Purchase';
-import Women from 'src/pages/women/Women';
-import Men from 'src/pages/men/Men';
+import Contact from 'src/pages/contact/Contact';
+import News from 'src/pages/news/News';
+import Category from 'src/pages/category/Category';
 export interface IAppRoutersProps extends StateProps, DispatchProps {
     match?: match
 }
@@ -32,8 +33,9 @@ const AppRouters = ({ match }: IAppRoutersProps) => {
                         <MenuPrivateRoute path="/checkout" component={Checkout} />
                         <MenuPrivateRoute path="/account-info" component={AccountInfo} />
                         <ErrorBoundaryRoute path="/products" component={ProductDetail} />
-                        <ErrorBoundaryRoute path="/women" component={Women} />
-                        <ErrorBoundaryRoute path="/men" component={Men} />
+                        <ErrorBoundaryRoute path="/contact" component={Contact} />
+                        <ErrorBoundaryRoute path="/news" component={News} />
+                        <ErrorBoundaryRoute path="/category" component={Category} />
                         <ErrorBoundaryRoute exact path="/login" component={Login} />
                     </Suspense>
                     <ErrorBoundaryRoute component={PageNotFound} />

@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "@emotion/react": "^11.9.3",
+        "@react-google-maps/api": "^2.18.1",
         "@testing-library/jest-dom": "^5.14.1",
         "@testing-library/react": "^13.0.0",
         "@testing-library/user-event": "^13.2.1",
@@ -40,6 +41,7 @@
         "react-redux": "6.0.1",
         "react-router-dom": "5.2.0",
         "react-scripts": "5.0.1",
+        "react-scripts-ts": "2.13.0",
         "react-slick": "^0.29.0",
         "react-star-rating-component": "^1.4.1",
         "reactstrap": "^9.1.1",
@@ -87,6 +89,7 @@
         ]
     },
     "devDependencies": {
+        "@types/google.maps": "^3.52.6",
         "ajv": "^7.2.4",
         "clean-webpack-plugin": "^4.0.0",
         "compression-webpack-plugin": "^10.0.0",

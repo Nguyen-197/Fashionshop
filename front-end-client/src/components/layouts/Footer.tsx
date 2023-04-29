@@ -52,7 +52,7 @@ const Footer = () => {
                 <div className="container-fluid clearfix">
                     <div className="innerInfoFooter row">
                         <div className="col-xs-12 col-sm-4">
-                            <h4  onClick={onCollapse}>HỖ TRỢ KHÁCH HÀNG</h4>
+                            <h4  onClick={onCollapse}><span>HỖ TRỢ KHÁCH HÀNG<i className={isCollapse ? 'ic-chevron ic-down' : 'ic-chevron ic-up'}></i></span></h4>
                             <ul style={{display: isCollapse ? 'block' : 'none'}}>
                                 <li>
                                     <a href="#" className="link-bottom">
@@ -92,7 +92,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="col-xs-12 col-sm-4">
-                            <h4  onClick={onCollapse}>VỀ YUNO</h4>
+                            <h4  onClick={onCollapse}><span>VỀ YUNO<i className={isCollapse ? 'ic-chevron ic-down' : 'ic-chevron ic-up'}></i></span></h4>
                             <ul style={{display: isCollapse ? 'block' : 'none'}}>
                             <li>
                                     <a href="#" className="link-bottom">
@@ -124,6 +124,21 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <div className="bottomBar">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-xs-12 col-sm-8">
+                            <div className='desBottom'>© Công ty Cổ phần Seedcom Fashion Group</div>
+                        </div>
+                        <div className="col-xs-12 col-sm-4">
+                            <div className="imgBottom">
+                                <img src="https://file.hstatic.net/1000003969/file/icon-dangky_ed795de8b131419393b256f6384de715.png" alt="logo" />
+                                <p>Powered by Haravan Enterprise.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

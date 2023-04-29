@@ -18,6 +18,11 @@ export class CategoryService extends BaseService {
             params: buildParams
         })
     }
+    public findByCode(code) {
+        return axios.get(`${this.baseUrl}/find-by-code/${code}`, {
+            headers: { ['Content-Type']: 'application/json' },
+        })
+    }
 }
 
 export default new CategoryService();

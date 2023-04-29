@@ -138,7 +138,56 @@ export class CommonUtil {
         const formData = CommonUtil.objectToFormData(filteredData, '', []);
         return formData;
     }
+    static convertFormArray = (dataPost: any): FormData => {
+        const filteredData = CommonUtil.convertData(dataPost);
+        console.log("filteredData",filteredData);
+        
+        const formData = CommonUtil.buildArray(filteredData, '', []);
+        console.log("formData",formData);
+        return formData;
 
+
+    }
+    static buildArray(obj, rootName, ignoreList) {
+        const formData = new URLSearchParams();
+        function appendFormData(data, root) {
+            if (!ignore(root)) {
+                root = root || '';
+                if (Array.isArray(data)) {
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i] && typeof data[i] === 'object') {
+                            appendFormData(data[i], root + '[' + i + ']');
+                        } else {
+                            appendFormData(data[i], root);
+                        }
+                    }
+                } else if (data && data instanceof Date) {
+                    formData.append(root, data.toISOString());
+                } else if (data && typeof data === 'object' && data.type !== 'stored_file') {
+                    // Object.keys(data).forEach(key => appendFormData(data[key], key));
+                    for (const key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            if (root === '') {
+                                appendFormData(data[key], `${key}`);
+                            } else {
+                                appendFormData(data[key], `${root}.${key}`);
+                            }
+                        }
+                    }
+                } else {
+                    if (data !== null && typeof data !== 'undefined' && data.type !== 'stored_file') {
+                        formData.append(root, data);
+                        // formData[root] = data;
+                    }
+                }
+            }
+        }
+        function ignore(root) {
+            return Array.isArray(ignoreList) && ignoreList.some(x => x === root);
+        }
+        appendFormData(obj, rootName)
+        return formData;
+    }
 
     /**
    * objectToFormData

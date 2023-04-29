@@ -10,43 +10,40 @@ export class ProductService extends BaseService {
 
     public async getProductSales(formData?: any, event?: any) {
         const url = `${this.baseUrl}/product-sales`;
-        formData = _.cloneDeep(formData || {});
+        formData = _.cloneDeep(formData || {})
+        formData = this.convertFormFile(formData || {});
         if (event) {
-            formData['_search'] = event;
+            formData.append("_search", JSON.stringify(event))
         }
-        // formData = this.convertFormFile(formData || {});
-        const buildParams = CommonUtil.buildParams(formData || {});
         return axios.get(url, {
             headers: { ['Content-Type']: 'application/json' },
-            params: buildParams
+            params: formData
         });
     }
 
     public async getNewsProduct(formData?: any, event?: any) {
         const url = `${this.baseUrl}/news-product`;
-        formData = _.cloneDeep(formData || {});
+        formData = _.cloneDeep(formData || {})
+        formData = this.convertFormFile(formData || {});
         if (event) {
-            formData['_search'] = event;
+            formData.append("_search", JSON.stringify(event))
         }
-        // formData = this.convertFormFile(formData || {});
-        const buildParams = CommonUtil.buildParams(formData || {});
         return axios.get(url, {
             headers: { ['Content-Type']: 'application/json' },
-            params: buildParams
+            params: formData
         });
     }
 
     public async getBestSellersProduct(formData?: any, event?: any) {
         const url = `${this.baseUrl}/best-sellers-product`;
-        formData = _.cloneDeep(formData || {});
+        formData = _.cloneDeep(formData || {})
+        formData = this.convertFormFile(formData || {});
         if (event) {
-            formData['_search'] = event;
+            formData.append("_search", JSON.stringify(event))
         }
-        // formData = this.convertFormFile(formData || {});
-        const buildParams = CommonUtil.buildParams(formData || {});
         return axios.get(url, {
             headers: { ['Content-Type']: 'application/json' },
-            params: buildParams
+            params: formData
         });
     }
     public async getById(id: any) {

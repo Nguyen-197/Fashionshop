@@ -17,9 +17,9 @@ const HomeTab = (props: HomeTabProps) => {
 
     const getBestSellersProduct = async (formData?: any, event?: any) => {
         try {
-            console.log("formData", event);
+            console.log("formData", formSearch);
 
-            const rest = await productServices.getBestSellersProduct(formData, event);
+            const rest = await productServices.getBestSellersProduct(formSearch, event);
             if (rest.data.type == RESPONSE_TYPE.SUCCESS) {
                 const restData = rest.data.data;
                 setProducts(restData);
@@ -31,7 +31,7 @@ const HomeTab = (props: HomeTabProps) => {
 
     const getProductSales = async (formData?: any, event?: any) => {
         try {
-            const rest = await productServices.getProductSales(formData, event);
+            const rest = await productServices.getProductSales(formSearch, event);
             if (rest.data.type == RESPONSE_TYPE.SUCCESS) {
                 const restData = rest.data.data;
                 setProducts(restData);
@@ -43,7 +43,7 @@ const HomeTab = (props: HomeTabProps) => {
 
     const getNewsProduct = async (formData?: any, event?: any) => {
         try {
-            const rest = await productServices.getNewsProduct(formData, event);
+            const rest = await productServices.getNewsProduct(formSearch, event);
             if (rest.data.type == RESPONSE_TYPE.SUCCESS) {
                 const restData = rest.data.data;
                 setProducts(restData);

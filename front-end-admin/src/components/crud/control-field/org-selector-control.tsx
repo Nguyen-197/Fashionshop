@@ -32,13 +32,13 @@ const OrgSelectorControl = forwardRef((props: IOrgSelectorControlProps, ref) => 
     }, [value]);
 
     const onSelected = (event) => {
-        if(!event.parentId) {
+        // if(!event.parentId) {
             setShowDialog(false);
             setOrgName(event.name);
             setValue(event.id);
-        } else {
-            Toast.error("Danh mục chỉ có tối đa 2 cấp");
-        }
+        // } else {
+        //     Toast.error("Danh mục chỉ có tối đa 2 cấp");
+        // }
     }
 
     const onCancel = () => {

@@ -74,7 +74,8 @@ public interface CategoryRepository extends CRUDDao<Category, Long> {
      * List all Category
      */
     public List<Category> findAll();
-
+    
+    public Category findByCode(String code);
 	/**
      * List all Category paginate
      */

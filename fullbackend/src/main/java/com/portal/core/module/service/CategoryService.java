@@ -149,7 +149,9 @@ public class CategoryService extends CRUDService<Category, CategoryForm> {
     public DataTableResults<Category> getDataTables(CategoryForm form) {
         return categoryRepository.getDatatables(filterData, form);
     }
-
+    public Category findByCode(String code) {
+    	return categoryRepository.findByCode(code);
+    }
     private Boolean checkScopeUpdate(Category category, Category categoryParent) {
         if (category.getId().equals(categoryParent.getId())) {
             return false;

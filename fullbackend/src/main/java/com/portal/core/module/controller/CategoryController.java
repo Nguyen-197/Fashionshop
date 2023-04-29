@@ -86,7 +86,22 @@ public class CategoryController extends CRUDController<Category, CategoryForm> {
             return  Response.error(Constants.RESPONSE_CODE.SERVER_ERROR).withMessage("network error");
         }
     }
-
+    
+    
+    /**
+     * findByCode
+     *
+     * @param code
+     * @return
+     */
+    @GetMapping("/find-by-code/{code}")
+    private Response findCategoryByCode(HttpServletRequest request, @PathVariable String code) throws SysException {
+    	Category category = categoryService.findByCode(code);
+    	if (category == null) {
+            return Response.warning(Constants.RESPONSE_CODE.RECORD_DELETED);
+        }
+        return Response.success().withData(category);
+    }
     @GetMapping("/lazy-load-child")
     private Response getLazyLoadTree(HttpServletRequest req, @RequestParam Long parentId) {
         try {

@@ -55,24 +55,24 @@ const Header = (props: IHeaderProps) => {
         const _headerMenu = [
             {
                 id: 1,
-                label: "Home",
+                label: "Trang chủ",
                 url: "/home",
                 dropdownContent: []
             },
             {
                 id: 2,
-                label: "Product",
+                label: "Sản phẩm",
                 classNames: "drop-item"
             },
             {
                 id: 3,
-                label: "News",
+                label: "Tin tức",
                 url: "/news",
                 dropdownContent: []
             },
             {
                 id: 4,
-                label: "Contact",
+                label: "Liên hệ",
                 url: "/contact",
                 dropdownContent: []
             },
@@ -81,7 +81,6 @@ const Header = (props: IHeaderProps) => {
         const loadDatasource = async () => {
             await categoryServices.initTreeOrg().then((res: any) => {
                 setTreeDataCategory(convertTreeNode(res?.data?.data));
-                console.log("treeDataCategory", convertTreeNode(res?.data?.data));
             });
         }
         loadDatasource();
@@ -199,12 +198,18 @@ const Header = (props: IHeaderProps) => {
                         { treeDataCategory.map((item, index) => {
                             return (
                                 <div className="col-md-2 col-sm-2" key={index}>
-                                    {!item.parentId && <a href='#' className='parent-label'>{item.name}</a> }
+                                    {!item.parentId && <Link className='parent-label' to={`/category?${decodeURIComponent('code='+item.code)}`}>
+                                                        {item.name}
+                                                    </Link> }
                                     { item.listCategoryChild.length > 0 &&
                                      <ul>
                                         {item.listCategoryChild.map((itemChild , indexChild) => {
                                             return (
-                                                <li key={indexChild}><a href='#'>{itemChild.name}</a></li>
+                                                <li key={indexChild}>
+                                                    <Link to={`/category?${decodeURIComponent('code='+itemChild.code)}`}>
+                                                        {itemChild.name}
+                                                    </Link>
+                                                </li>
                                             )
                                         })}
                                      </ul> 
