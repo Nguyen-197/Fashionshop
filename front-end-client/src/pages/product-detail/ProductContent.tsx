@@ -233,7 +233,7 @@ const ProductContent = (props: IProductContentProps) => {
 
     return (
         <>
-            <div className="container">
+            <div className="container mt-60">
                 <div id="content">
                     <div className="row mb-35">
                         <div className="col-xs-12 col-sm-5">
@@ -293,7 +293,7 @@ const ProductContent = (props: IProductContentProps) => {
                                 </>
                             }
                             <div className="detail-product-body">
-                                <div className="panel-product ship-location">
+                                {/* <div className="panel-product ship-location">
                                     <label className="text-label">Vận chuyển</label>
                                     <div className="flex">
                                         <i className="fa-solid fa-truck-fast"></i>
@@ -306,7 +306,7 @@ const ProductContent = (props: IProductContentProps) => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="panel-product">
                                     <label className="text-label">Màu</label>
                                     <div className="list-item">

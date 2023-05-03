@@ -68,8 +68,10 @@ public interface UserRepository  extends CRUDDao<User,Long> {
         nativeSQL += "       ,u.phone_number as phoneNumber    ";
         nativeSQL += "       ,ur.id as roleId    ";
         nativeSQL += "       ,ur.name as roleName   ";
+        nativeSQL += "       ,(SELECT SUM(or_done.total_price) FROM orders or_done WHERE u.id = or_done.id_user AND or_done.status = 5 ) as totalPriceDone   ";
+        nativeSQL += "       ,(SELECT COUNT(or_done.id_user) FROM orders or_done WHERE u.id = or_done.id_user AND or_done.status = 5 ) as totalOrderDone   ";
         nativeSQL += "       FROM u_user u ";
-        nativeSQL += "        join u_role ur on ur.id = u.role_id ";
+        nativeSQL += "        INNER JOIN u_role ur on ur.id = u.role_id ";
         String orderBy = " ORDER BY u.id DESC";
         StringBuilder strCondition = new StringBuilder(" WHERE 1 = 1 ");
         CommonUtils.filter(form.getId(), strCondition, paramList, "id");

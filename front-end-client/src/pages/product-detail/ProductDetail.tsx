@@ -36,7 +36,6 @@ const ProductDetail = (props: IProductDetailProps) => {
         <>
             <BaseLayout>
                 <div>
-                    <Banner />
                     { product ?
                         <ProductContent
                             product={product}

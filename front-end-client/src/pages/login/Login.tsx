@@ -10,29 +10,20 @@ import { handleLogin, setAuthenticated } from 'src/reducers/authentication';
 import { Button } from 'primereact/button';
 import * as FaIcon from "react-icons/fa";
 import { useHistory } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Storage } from 'react-jhipster';
 import { UserContext } from 'src/context/user';
+import BaseLayout from 'src/components/layouts/BaseLayout';
+import Banner from '../home/Banner';
+import LoginForm from './LoginForm';
+import SignForm from './SignForm';
 type ILoginProps = StateProps & DispatchProps & {
 }
 
 const Login = (props: ILoginProps) => {
     const { userInfo } = useContext(UserContext);
     const history = useHistory();
-    const { values, touched, errors, setErrors, setFieldValue, handleSubmit } = useFormik({
-        initialValues: {
-            username: "",
-            password: ""
-        },
-        onSubmit: async (data: any) => {
-            try {
-                await props.handleLogin(data);
-            } catch (error) {
-                console.log(">>>> error: ", error);
-            }
-        }
-    });
-
+    const [loginMode, setLoginMode] = useState(true);
     useEffect(() => {
         Storage.local.remove('token');
         localStorage.clear();
@@ -57,50 +48,31 @@ const Login = (props: ILoginProps) => {
         }
     }, [props.isLoginSuccess, props.isAuthenticated]);
 
-    const onChange = async (fieldName: string, event: any) => {
-        await setFieldValue(fieldName, event.target.value);
-    };
+    const callbackFunction = (data) => {
+        setLoginMode(data);
+    }
     return (
-        <>
-            {/* <div className='video__player'>
-                <video width="100%" height="100%" autoPlay muted loop>
-                    <source src={VideoShort} type="video/mp4"></source>
-                </video>
-            </div> */}
-            <div className="login-overlay flex-center">
-                <div className="login-box flex">
-                    <div className="login-left flex-center flex-col">
-                        <img width="30%" src={YunoLogo} alt="ZuneLogo" />
-                        <form className="login-form flex-col" onSubmit={handleSubmit}>
-                            <div>
-                                <InputText id="username" name="username" placeholder="Username" value={_.get(values, 'username')} onChange={(event) => onChange('username', event)} />
-                            </div>
-                            <div>
-                                <Password id="password" name="password" placeholder="Password" value={_.get(values, 'password')} onChange={(event) => onChange('password', event)} feedback={false} />
-                            </div>
-                            <div>
-                                <Button
-                                    className="login-normal"
-                                    label="Đăng nhập"
-                                    onClick={() => handleSubmit()}
-                                />
-                                <Button onClick={() => handleSubmit()}>
-                                    <FaIcon.FaFacebookSquare className="icon" />
-                                    <span className="px-3">Đăng nhập với Facebook</span>
-                                </Button>
-                                <Button onClick={() => handleSubmit()}>
-                                    <FaIcon.FaGoogle className="icon" />
-                                    <span className="px-3">Đăng nhập với Google</span>
-                                </Button>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="login-right">
-                        <div className="animation-overlay"></div>
-                        {/* <img src={BannerLogin} alt="banner-login" /> */}
+        <>  
+            <BaseLayout>
+                <div>
+                    <Banner/>
+                    <div className="flex-center my-8">
+                        {loginMode &&
+                        <LoginForm 
+                            loginMode={loginMode}
+                            parentCallback={callbackFunction}
+                        />
+                        }
+                        {
+                            !loginMode &&
+                            <SignForm
+                                loginMode={loginMode}
+                                parentCallback={callbackFunction}
+                            />
+                        }
                     </div>
                 </div>
-            </div>
+            </BaseLayout>
         </>
     )
 }
@@ -111,7 +83,6 @@ const mapStateToProps = ({ authentication }: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-    handleLogin,
     setAuthenticated
 };
 

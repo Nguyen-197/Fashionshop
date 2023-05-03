@@ -2,7 +2,9 @@ package com.portal.core.module.controller;
 
 
 import com.portal.core.common.config.TokenProvider;
+import com.portal.core.common.exception.ValidateException;
 import com.portal.core.common.result.Response;
+import com.portal.core.module.dto.UserForm;
 import com.portal.core.module.dto.request.loginForm;
 import com.portal.core.module.dto.respon.LoginFormResponse;
 import com.portal.core.module.entities.User;
@@ -56,10 +58,16 @@ public class AuthenticationController {
 					.map(item -> item.getAuthority())
 					.collect(Collectors.toList());
 			loginFormResponse.setRoles(permissions);
-			return Response.success().withData(loginFormResponse);
+			return Response.success("login.success").withData(loginFormResponse);
 		} catch (AuthenticationException e) {
 			throw new BadCredentialsException("Tài khoản hoặc mật khẩu không chính xác");
 		}
+	}
+	@RequestMapping(value = "/sign-in" , method = RequestMethod.POST)
+	public @ResponseBody Response signUp(@RequestBody UserForm userForm) throws ValidateException, Exception {
+		User user = new User();
+		user = userService.saveOrUpdate(user, userForm);
+		return Response.success("signup.success").withData(user);
 	}
 }
 

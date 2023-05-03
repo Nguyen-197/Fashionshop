@@ -52,4 +52,10 @@ public class User implements Serializable {
 
     @Transient
     private String roleName;
+    
+    @Transient
+    private Long totalPriceDone;
+    
+    @Transient
+    private Integer totalOrderDone;
 }

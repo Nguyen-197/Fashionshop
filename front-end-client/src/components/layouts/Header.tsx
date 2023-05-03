@@ -88,11 +88,14 @@ const Header = (props: IHeaderProps) => {
     }, []);
 
     useEffect(() => {
-        let virtualCartCount = 0;
-        for (let i = 0; i < cartItems.length; i++) {
-            virtualCartCount += cartItems[i].quantity;
-        }
-        setTotalCart(virtualCartCount);
+        // let virtualCartCount = 0;
+        // for (let i = 0; i < cartItems.length; i++) {
+
+        //     virtualCartCount += cartItems[i].quantity;
+        // }
+        // console.log("cartItems", cartItems);
+        
+        setTotalCart(cartItems.length);
     }, [cartItems])
 
     useEffect(() => {

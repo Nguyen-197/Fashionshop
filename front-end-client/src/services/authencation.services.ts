@@ -9,6 +9,9 @@ export class AccountService extends BaseService {
     public login(formData) {
         return axios.post(`${this.baseUrl}/login`, formData);
     }
+    public signin(formData) {
+        return axios.post(`${this.baseUrl}/sign-in`, formData);
+    }
 }
 
 export default new AccountService();

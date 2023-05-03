@@ -208,11 +208,14 @@ const OrderList = forwardRef((props: IOrderListProps, ref: any) => {
                             className="p-button-danger"
                             onClick={() => onViewOrder(data)}
                         />
-                        <Button
-                            label="Sửa đơn hàng"
-                            className="p-button-text"
-                            onClick={() => onEditOrder(data)}
-                        />
+                        {
+                            data.status === 0 && 
+                            <Button
+                                label="Sửa đơn hàng"
+                                className="p-button-text"
+                                onClick={() => onEditOrder(data)}
+                            />
+                        }
                     </div>
                 </div>
                 <DataTable value={data?.productInfo} stripedRows size="small" responsiveLayout="scroll">

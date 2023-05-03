@@ -6,6 +6,7 @@ import productServices from "src/services/product.services";
 import categoryServices from "src/services/category.services";
 import { RESPONSE_TYPE } from "src/@types/enums";
 import React, { useEffect, useState } from 'react';
+import useDebounce from 'src/utils/useDebounce';
 import { useParams, useLocation } from 'react-router-dom';
 type IHomeProps = StateProps & DispatchProps & {
 }
@@ -15,6 +16,7 @@ const Home = (props: IHomeProps) => {
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState({name:''});
     const [formSearch, setFormSearch] = useState({});
+    const debouncedSearch = useDebounce(formSearch, 1000);
     const code = new URLSearchParams(search).get('code');
     const height = 500;
     const getAllProductByCategory = async (formData?: any, event?: any) => {
@@ -50,6 +52,16 @@ const Home = (props: IHomeProps) => {
             findByCode(code)
         }
     }, [code]);
+    useEffect(() => {
+        if (!debouncedSearch || Object.keys(debouncedSearch).length == 0) {
+          return;
+        }
+        const fetchData = async () => {
+            const form = Object.assign({}, formSearch , {listProductCategory:[code]})
+            getAllProductByCategory(form)
+        }
+        fetchData();
+    }, [debouncedSearch]);
     useEffect(() => {
         if(code) {
             const form = {

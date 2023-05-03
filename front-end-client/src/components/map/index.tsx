@@ -24,6 +24,7 @@ function Map() {
   const { isLoaded } = useLoadScript({
     // Enter your own Google Maps API key
     // https://maps.googleapis.com/maps/api/js?key=AIzaSyAexJuhtLlyol95mO5NRMiQ4aqZ5mc0Nn8&v=3.exp&libraries=geometry,drawing,places
+    // AIzaSyC4Wf6YgqgaqXtaHACUYyhlRNtMutMPHuk
     googleMapsApiKey: ""
   });
 

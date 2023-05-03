@@ -24,31 +24,13 @@ const ContentTab = (props: IContentTabProps) => {
                             <div className="col-4">
                                 <div className="style-news-item normal-item">
                                     <div className="image-wrapper">
-                                        <Link to="/home">
                                             <img className="lazy" src={Content_1} alt="Content_1" />
-                                        </Link>
-                                    </div>
-                                    <h3 className="title">Leather Bucket</h3>
-                                    <div className="link">
-                                        <Link to="/home">
-                                            By Alessandro Michele and Harry Styles
-                                            <i className="fa-solid fa-chevron-right"></i>
-                                        </Link>
                                     </div>
                                 </div>
                                 <div className="style-news-item normal-item">
                                     <div className="item-inner-wrapper">
                                         <div className="image-wrapper">
-                                            <Link to="/home">
                                                 <img className="lazy" src={Content_2} alt="Content_2" />
-                                            </Link>
-                                        </div>
-                                        <h3 className="title">Hikaru Pant</h3>
-                                        <div className="link">
-                                            <Link to="/home">
-                                                By Alessandro Michele and Harry Styles
-                                                <i className="fa-solid fa-chevron-right"></i>
-                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -61,13 +43,6 @@ const ContentTab = (props: IContentTabProps) => {
                                                 <img height="600px" className="lazy" src={Content_3} alt="Content_3" />
                                             </Link>
                                         </div>
-                                        <h3 className="title">Culture Wind-breaker - White</h3>
-                                        <div className="link">
-                                            <Link to="/home">
-                                                By Alessandro Michele and Harry Styles
-                                                <i className="fa-solid fa-chevron-right"></i>
-                                            </Link>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,26 +53,12 @@ const ContentTab = (props: IContentTabProps) => {
                                             <img className="lazy" src={Content_4} alt="Content_4" />
                                         </Link>
                                     </div>
-                                    <h3 className="title">Kami Croptop</h3>
-                                    <div className="link">
-                                        <Link to="/home">
-                                            By Alessandro Michele and Harry Styles
-                                            <i className="fa-solid fa-chevron-right"></i>
-                                        </Link>
-                                    </div>
                                 </div>
                                 <div className="style-news-item normal-item">
                                     <div className="item-inner-wrapper">
                                         <div className="image-wrapper">
                                             <Link to="/home">
                                                 <img className="lazy" src={Content_5} alt="Content_5" />
-                                            </Link>
-                                        </div>
-                                        <h3 className="title">Raw Sude Shirt</h3>
-                                        <div className="link">
-                                            <Link to="/home">
-                                                By Alessandro Michele and Harry Styles
-                                                <i className="fa-solid fa-chevron-right"></i>
                                             </Link>
                                         </div>
                                     </div>

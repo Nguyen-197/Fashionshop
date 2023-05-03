@@ -95,7 +95,11 @@
     },
     "login": {
         "signIn": "Đăng nhập",
-        "signInOther": " với tài khoản khác."
+        "signInOther": " với tài khoản khác.",
+        "success": "Đăng nhập tài khoản thành công"
+    },
+    "signup": {
+        "success": "Đăng ký tài khoản thành công"
     },
     "category": {
         "categoryCode": "Mã danh mục",

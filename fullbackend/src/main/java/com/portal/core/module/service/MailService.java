@@ -25,7 +25,7 @@ public class MailService {
         boolean multipart = true;
 
         MimeMessageHelper helper = new MimeMessageHelper(message, multipart, "utf-8");
-        String htmlMsg = "<h1>Chào mừng bạn đến với hệ thống website bán quần áo thời trang yuno.Zx</h1></Br>" +
+        String htmlMsg = "<h1>Chào mừng bạn đến với hệ thống website bán quần áo thời trang Yuno</h1></Br>" +
                 "<h3>Tài khoản của bạn là:</h3>" + email +"</br>"+
                 "<h3>Mật khẩu của bạn là :</h3>" + password;
 
@@ -33,7 +33,7 @@ public class MailService {
 
         helper.setTo(email);
 
-        helper.setSubject("WELCOME TO yuno.XZ");
+        helper.setSubject("WELCOME TO YUNO");
 
 
         this.emailSender.send(message);
@@ -46,7 +46,7 @@ public class MailService {
     public void sendHtmlMessage(String to, String subject, String content) throws MessagingException {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
-        helper.setFrom("team64datn@gmail.com");
+        helper.setFrom("bolombombom@gmail.com");
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(content, true);

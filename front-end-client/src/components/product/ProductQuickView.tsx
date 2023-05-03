@@ -44,6 +44,8 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
 
     useEffect(() => {
         const productId = product.id;
+        console.log("product", product);
+        
         if (!productId || !props.view) return;
         const fetchProductDetail = async () => {
             const restDetail = await productDetailServices.getProductDetail(productId);
@@ -71,6 +73,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
             }
         }
         fetchProductDetail();
+        
         // setSelectedProduct(product);
     }, [product, props.view]);
 
@@ -145,7 +148,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                                 </>
                             )}
                             {
-                                product.minPrice < product.maxPrice && (
+                                product.minPrice < product.maxPrice &&(
                                     <>
                                         <span className="price">
                                             { CommonUtil.formatMoney(product.minPrice) }
@@ -163,7 +166,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                             <div className="list-item">
                                 { sizeList.map(item => {
                                     return (
-                                        <div className={classNames("item", { 'active': activeSize == item.id })} key={item.code} onClick={() => setActiveSize(item.id)}>
+                                        <div className={classNames("item", { 'active': activeSize == item.id })} key={item.code} onClick={() => {setActiveSize(item.id); setCountCart(1)}}>
                                             {item.name}
                                             { activeSize == item.id && <div className="product-variation__tick">
                                                 <AiIcon.AiOutlineCheck className="icon" />
@@ -178,7 +181,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                             <div className="list-item">
                                 { colorList.map(item => {
                                     return (
-                                        <div className={classNames("item", { 'active': activeColor == item.id })} key={item.code} onClick={() => setActiveColor(item.id)}>
+                                        <div className={classNames("item", { 'active': activeColor == item.id })} key={item.code} onClick={() => {setActiveColor(item.id); setCountCart(1)}}>
                                             {item.name}
                                             { activeColor == item.id && <div className="product-variation__tick">
                                                 <AiIcon.AiOutlineCheck className="icon" />
@@ -196,7 +199,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                                 </div>
                                 <div className="count-cart-item text flex-center">
                                     <form onSubmit={(e) => e.preventDefault()}>
-                                        <InputNumber mode="decimal" min={1} useGrouping={false} value={countCart} onValueChange={(e) => setCountCart(e.value)} />
+                                        <InputNumber mode="decimal" min={1} max={selectedProduct?.quantity || 1000} useGrouping={false} value={countCart} onValueChange={(e) => setCountCart(e.value)} />
                                     </form>
                                 </div>
                                 <div className="count-cart-item right flex-center"onClick={() => onIncrease()}>

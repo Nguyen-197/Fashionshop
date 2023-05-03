@@ -17,8 +17,6 @@ const HomeTab = (props: HomeTabProps) => {
 
     const getBestSellersProduct = async (formData?: any, event?: any) => {
         try {
-            console.log("formData", formSearch);
-
             const rest = await productServices.getBestSellersProduct(formSearch, event);
             if (rest.data.type == RESPONSE_TYPE.SUCCESS) {
                 const restData = rest.data.data;
@@ -96,19 +94,19 @@ const HomeTab = (props: HomeTabProps) => {
                             "product-hometabnav__item active" : "product-hometabnav__item"}
                             onClick={() => { setCurrentTab(1); setIsActive(1) }}
                         >
-                            Best Sellers
+                            BÁN CHẠY
                         </li>
                         <li className={ isActive === 2 ?
                             "product-hometabnav__item active" : "product-hometabnav__item"}
                             onClick={() => { setCurrentTab(2); setIsActive(2) }}
                         >
-                            New Products
+                            SẢN PHẨM MỚI
                         </li>
                         <li className={ isActive === 3 ?
                             "product-hometabnav__item active" : "product-hometabnav__item"}
                             onClick={() => { setCurrentTab(3); setIsActive(3) }}
                         >
-                            Sales Products
+                            SẢN PHẨM KHUYẾN MẠI
                         </li>
                     </ul>
                 </div>

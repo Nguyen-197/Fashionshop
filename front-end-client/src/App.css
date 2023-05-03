@@ -1281,6 +1281,17 @@ img {
     margin: 0 0 0 15px;
     font-size: 14px;
 }
+.btn-cancer, .btn-filter {
+    margin: 0 16px 0 0;
+    height: 32px;
+    padding: 0 20px;
+    cursor: pointer;
+    min-width: 100px;
+}
+.btn-cancer p, .btn-filter p {
+    margin: 0;
+    font-size: 14px;
+}
 .product-info-wishlist {
     width: 60px;
     height: 60px;
@@ -3232,10 +3243,127 @@ button.button:before {
     top: 27px;
     right: -13px;
     border: 1px solid #ccc;
-    width: 70vw;
-    height: 400px;
+    padding: 12px 24px;
+    width: 600px;
+    min-height: 400px;
     background-color: #fff;
 }
 .select-filter span::selection {
     background-color: transparent;
 }
+.popup-filter--name {
+    margin-bottom: 8px;
+}
+.popup-filter--list {
+    width: fit-content;
+}
+.box-login {
+    width: 30%;
+}
+.box-login .sign {
+    cursor: pointer;
+    color: #007bff;
+}
+.box-login .sign:hover {
+    text-decoration: underline;
+}
+
+
+
+/* ANIMATION */
+.slide-out-blurred-left {
+	-webkit-animation: slide-out-blurred-left 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+	        animation: slide-out-blurred-left 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+}
+@-webkit-keyframes slide-out-blurred-left {
+    0% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+              transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(-1000px) scaleX(2) scaleY(0.2);
+              transform: translateX(-1000px) scaleX(2) scaleY(0.2);
+      -webkit-transform-origin: 100% 50%;
+              transform-origin: 100% 50%;
+      -webkit-filter: blur(40px);
+              filter: blur(40px);
+      opacity: 0;
+    }
+  }
+  @keyframes slide-out-blurred-left {
+    0% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+              transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateX(-1000px) scaleX(2) scaleY(0.2);
+              transform: translateX(-1000px) scaleX(2) scaleY(0.2);
+      -webkit-transform-origin: 100% 50%;
+              transform-origin: 100% 50%;
+      -webkit-filter: blur(40px);
+              filter: blur(40px);
+      opacity: 0;
+    }
+  }
+
+
+  
+/**
+ * ----------------------------------------
+ * animation slide-in-blurred-right
+ * ----------------------------------------
+ */
+ .slide-in-blurred-right {
+	-webkit-animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+	        animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+@-webkit-keyframes slide-in-blurred-right {
+    0% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+              transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+              transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+              filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+              transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-blurred-right {
+    0% {
+      -webkit-transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+              transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
+      -webkit-transform-origin: 0% 50%;
+              transform-origin: 0% 50%;
+      -webkit-filter: blur(40px);
+              filter: blur(40px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0) scaleY(1) scaleX(1);
+              transform: translateX(0) scaleY(1) scaleX(1);
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      -webkit-filter: blur(0);
+              filter: blur(0);
+      opacity: 1;
+    }
+  }

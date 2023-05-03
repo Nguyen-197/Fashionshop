@@ -24,15 +24,15 @@ const Contact = (props: IContactProps) => {
                                     <ul className="list-info">
                                         <li>
                                             <p>Địa chỉ chúng tôi</p>
-                                            <p><strong>313 Nguyễn Thị Thập, Phường Tân Phú, Quận 7, Tp. Hồ Chí Minh.</strong></p>
+                                            <p><strong>số 16 LK41 KĐT Vân Canh - Hoài Đức - Hà Nội</strong></p>
                                         </li>
                                         <li>
                                             <p>Email chúng tôi</p>
-                                            <p><strong>cskh@juno.vn</strong></p>
+                                            <p><strong>cskh@yuno.vn</strong></p>
                                         </li>
                                         <li>
                                             <p>Điện thoại</p>
-                                            <p><strong>1800 1160</strong></p>
+                                            <p><strong>1800 1162</strong></p>
                                         </li>
                                         <li>
                                             <p>Thời gian làm việc</p>

@@ -6,6 +6,8 @@ import { Paginator } from 'primereact/paginator';
 import CategoryService from 'src/services/category.services';
 import SizeService from 'src/services/size.services';
 import ColorService from 'src/services/color.services';
+import { Checkbox } from 'primereact/checkbox';
+import { log } from 'console';
 type HomeTabContent = StateProps & DispatchProps & {
     products: any;
     formSearch?: any;
@@ -21,9 +23,9 @@ const HomeTabContent = (props: HomeTabContent) => {
     const [loading, setLoading] = useState(false);
     const [basicRows, setBasicRows] = useState(16);
     const [selectedOrg, setSelectedOrg] = useState(null);
-    const [selectedKey, setSelectedKey] = useState(null);
-    const [selectedKeySize, setSelectedKeySize] = useState(null);
-    const [selectedKeyColor, setSelectedKeyColor] = useState(null);
+    const [selectedKeyOrder, setSelectedKeyOrder] = useState([]);
+    const [selectedKeySize, setSelectedKeySize] = useState([]);
+    const [selectedKeyColor, setSelectedKeyColor] = useState([]);
     const [isToggleFilter, setIsToggleFilter] = useState(false);
     // const [datasource, setDatasource] = useState({}) as any;
     const convertTreeNode = (listOrg: Array<any>) => {
@@ -62,36 +64,52 @@ const HomeTabContent = (props: HomeTabContent) => {
             })
         }
     }
-    const onChange = (e) => {
-        setSelectedKey(e.value)
-        const arr = Object.keys(e.value).filter(key => {
-            if(e.value[key].checked || e.value[key].partialChecked) {
-                return key
-            }
-        })
-        const form = Object.assign({} , dataSearch, {listProductCategory: [...arr]})
-        setDataSearch(form)
+    const onChangeOrder = (e) => {
+        const index = selectedKeyOrder.indexOf(e.value)
+        const listOrder = selectedKeyOrder.slice()
+        index >= 0 ? listOrder.splice(index, 1) : listOrder.push(e.value)
+        setSelectedKeyOrder(listOrder);
     }
     const onChangeSize= (e) => {
-        setSelectedKeySize(e.value)
-        const arr = Object.keys(e.value).filter(key => {
-            if(e.value[key].checked) {
-                return key
-            }
-        })
-        console.log(arr);
-        const form = Object.assign({} , dataSearch , {listProductSize: [...arr]})
-        setDataSearch(form)
+        const index = selectedKeySize.indexOf(e.value)
+        const listSize = selectedKeySize.slice()
+        index >= 0 ? listSize.splice(index, 1) : listSize.push(e.value)
+        setSelectedKeySize(listSize);
+        // setSelectedKeySize(e.value)
+        // const arr = Object.keys(e.value).filter(key => {
+        //     if(e.value[key].checked) {
+        //         return key
+        //     }
+        // })
+        // console.log(arr);
+        // const form = Object.assign({} , dataSearch , {listProductSize: [...arr]})
+        // setDataSearch(form)
     }
     const onChangeColor = (e) => {
-        setSelectedKeyColor(e.value)
-        const arr = Object.keys(e.value).filter(key => {
-            if(e.value[key].checked) {
-                return key
-            }
-        })
-        const form = Object.assign({} , dataSearch, {listProductColor: [...arr]})
-        setDataSearch(form)
+        console.log(e);
+        
+        const index = selectedKeyColor.indexOf(e.value)
+        const listColor = selectedKeyColor.slice()
+        index >= 0 ? listColor.splice(index, 1) : listColor.push(e.value)
+        setSelectedKeyColor(listColor);
+        // setSelectedKeyColor(e.value)
+        // const arr = Object.keys(e.value).filter(key => {
+        //     if(e.value[key].checked) {
+        //         return key
+        //     }
+        // })
+        // const form = Object.assign({} , dataSearch, {listProductColor: [...arr]})
+        // setDataSearch(form)
+    }
+    const hanlderFilter = () => {
+        const form = {
+            listProductColor: selectedKeyColor.slice(),
+            listProductSize: selectedKeySize.slice()
+        }
+        console.log("form", form);
+        
+        const formFilter = Object.assign({} , dataSearch, form)
+        setDataSearch(formFilter)
     }
     useEffect(() => {
         props.formSearch(dataSearch)
@@ -122,12 +140,68 @@ const HomeTabContent = (props: HomeTabContent) => {
                     <div className='d-flex justify-content-end relative px-5'style={{ zIndex: '10' }}>
                         <div className='relative select-filter' onClick={() =>setIsToggleFilter(!isToggleFilter)}>
                             <span className='relative'>Bộ lọc <i style={{ top: '6px' }} className="ic-up ic-chevron"></i></span>
+                        </div>
                             { isToggleFilter &&
                                 <div className='popup-filter'>
-
+                                    <div className='d-flex justify-content-between'>
+                                        <div>
+                                            <div className='popup-filter--name'>Kích cỡ</div>
+                                            <ul className='popup-filter--list'>
+                                                {treeDataSize?.map((item, index) => {
+                                                    return (
+                                                        <li key={index} className="field-checkbox popup-filter--item">
+                                                            <Checkbox inputId={`ck_size_` + index} name="size" value={item.code} onChange={onChangeSize} checked={selectedKeySize.indexOf(item.code) !== -1} />
+                                                            <label htmlFor={`ck_size_` + index}>{item.name}</label>
+                                                        </li>
+                                                    )
+                                                } )}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <div className='popup-filter--name'>Màu sắc</div>
+                                            <ul className='popup-filter--list'>
+                                                {treeDataColor?.map((item, index) => {
+                                                    return (
+                                                        <li key={index} className="field-checkbox popup-filter--item">
+                                                            <Checkbox inputId={`ck_color_` + index} name="color" value={item.code} onChange={onChangeColor} checked={selectedKeyColor.indexOf(item.code) !== -1} />
+                                                            <label htmlFor={`ck_color_` + index}>{item.name}</label>
+                                                        </li>
+                                                    )
+                                                } )}
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <div className='popup-filter--name'>Sắp xếp</div>
+                                            <ul className='popup-filter--list'>
+                                                <li className="field-checkbox popup-filter--item">
+                                                    <Checkbox inputId='ck-order-1' name="order" value='name_asc' onChange={onChangeOrder} checked={selectedKeyOrder.indexOf('name_asc') !== -1} />
+                                                    <label htmlFor='ck-order-1'>Tên (A-Z)</label>
+                                                </li>
+                                                <li className="field-checkbox popup-filter--item">
+                                                    <Checkbox inputId='ck-order-2' name="order" value='name_desc' onChange={onChangeOrder} checked={selectedKeyOrder.indexOf('name_desc') !== -1} />
+                                                    <label htmlFor='ck-order-2'>Tên (Z-A)</label>
+                                                </li>
+                                                <li className="field-checkbox popup-filter--item">
+                                                    <Checkbox inputId='ck-order-3' name="order" value='cost_asc' onChange={onChangeOrder} checked={selectedKeyOrder.indexOf('cost_asc') !== -1} />
+                                                    <label htmlFor='ck-order-3'>Giá tăng dần</label>
+                                                </li>
+                                                <li className="field-checkbox popup-filter--item">
+                                                    <Checkbox inputId='ck-order-4' name="order" value='cost_desc' onChange={onChangeOrder} checked={selectedKeyOrder.indexOf('cost_desc') !== -1} />
+                                                    <label htmlFor='ck-order-4'>Giá giảm dần</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className='d-flex justify-content-end'>
+                                        <div className="btn-cancer flex-center btn" onClick={() =>setIsToggleFilter(false)}>
+                                            <p>Hủy</p>
+                                        </div>
+                                        <div className="btn-filter flex-center btn" onClick={hanlderFilter}>
+                                            <p>Tìm kiếm</p>
+                                        </div>
+                                    </div>
                                 </div>
                             }
-                        </div>
                         <div></div>
 
                     </div>
@@ -150,7 +224,7 @@ const HomeTabContent = (props: HomeTabContent) => {
                                 textTransform: 'capitalize',
                                 marginTop: '150px'
                             }}>
-                                there's nothing here yet
+                                Chưa có gì
                             </div>
                         }
                     </div>

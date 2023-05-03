@@ -91,7 +91,7 @@ const Product = (props: IProductProps) => {
                         }
                     </div>
                     {
-                        product.sellNumber && <span className="discount">${product.sellNumber}% giảm</span>
+                        // product.sellNumber && <span className="discount">${product.sellNumber}% giảm</span>
                     }
                 </div>
             </div>

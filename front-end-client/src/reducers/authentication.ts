@@ -26,6 +26,7 @@ export const ACTION_TYPES = {
     CLEAR_AUTH: 'authentication/CLEAR_AUTH',
     ERROR_MESSAGE: 'authentication/ERROR_MESSAGE',
     LOGIN: 'authentication/LOGIN',
+    SIGNIN: 'authentication/SIGNIN',
     SET_LOADING: 'authentication/SET_LOADING',
     SET_AUTHENTICATED: 'authentication/SET_AUTHENTICATED',
     GET_USER_INFO: 'authentication/GET_USER_INFO',
@@ -153,7 +154,6 @@ export const handleLogin = (formData?: any) => {
         payload: AuthencationService.login(formData)
     });
 };
-
 export const handleUpdateDatasource = (key, value) => {
     return ({
         type: ACTION_TYPES.UPDATE_DATASOURCE,

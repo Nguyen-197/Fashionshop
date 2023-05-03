@@ -101,8 +101,11 @@ const UserList = (props: IUserListProps) => {
             }
         </div>
     )
-    const roleBodyTemplate = (rowData) => {
-        return <span>0</span>;
+    const totalPriceTemplate = (rowData) => {
+        return <span>{rowData.totalPriceDone ?? 0 }</span>;
+    }
+    const totalOrderTemplate = (rowData) => {
+        return <span>{rowData.totalOrderDone}</span>;
     }
     const activeBodyTemplate = (rowData) => {
         return <span>{rowData.active ? "Hoạt động" : "Khóa" || ''}</span>;
@@ -120,8 +123,8 @@ const UserList = (props: IUserListProps) => {
                         <Column field="fullName" header="Họ và Tên" sortable style={{ width: '150px' }}></Column>
                         <Column field="email" header="Email" sortable></Column>
                         <Column field="phoneNumber" header="Số điện thoại"></Column>
-                        <Column header="Tổng chi tiêu" body={roleBodyTemplate}></Column>
-                        <Column header="Tổng SL đặt hàng" body={roleBodyTemplate}></Column>
+                        <Column header="Tổng chi tiêu" body={totalPriceTemplate}></Column>
+                        <Column header="Tổng SL đặt hàng" body={totalOrderTemplate}></Column>
                         <Column field="active" header="Trạng thái" body={activeBodyTemplate}></Column>
                         <Column header="Thao tác" body={renderActionColumn} style={{ maxWidth: '70px' }}></Column>
                     </DataTable>
