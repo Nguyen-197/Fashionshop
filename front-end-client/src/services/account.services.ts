@@ -13,6 +13,9 @@ export class AccountService extends BaseService {
     public getUserInfo() {
         return axios.get(`${this.baseUrl}/info`);
     }
+    public changePassword(formData) {
+        return axios.post(`${this.baseUrl}/change-password`, formData);
+    }
 }
 
 export default new AccountService();

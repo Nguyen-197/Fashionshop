@@ -7,11 +7,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { CommonUtil } from 'src/utils/common-util';
+import { Toast } from 'src/components/toast/toast.utils';
 import * as AiIcon from 'react-icons/ai';
 import * as IoIcon from "react-icons/io5";
 import { GENDER, RESPONSE_TYPE } from 'src/@types/enums';
 import { InputNumber } from 'primereact/inputnumber';
 import { useContext, useEffect, useState } from 'react';
+import { Storage } from 'react-jhipster';
 import productDetailServices from 'src/services/product-detail.services';
 import _ from 'lodash';
 import { ProductDetailModel } from 'src/models/ProductDetailModel';
@@ -109,12 +111,24 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
     }
 
     const onAddToCart = async () => {
-        await addToCart(selectedProduct, countCart);
-        props.closeView();
+        const token = Storage.local.get('token');
+        if (token) {
+            await addToCart(selectedProduct, countCart);
+            props.closeView();
+        } else {
+            Toast.show(RESPONSE_TYPE.WARNING, null, "Vui lòng đăng nhập để có thể tiếp tục mua hàng !");
+            history.push('/login');
+        }
     }
 
     const onAddToWishList = async () => {
-        await addToWishlist(selectedProduct);
+        const token = Storage.local.get('token');
+        if (token) {
+            await addToWishlist(selectedProduct);
+        } else {
+            Toast.show(RESPONSE_TYPE.WARNING, null, "Vui lòng đăng nhập để có thể tiếp tục mua hàng !");
+            history.push('/login');
+        }
     }
 
     return (
@@ -140,7 +154,8 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                             { product.name }
                         </div>
                         <div className="product-info-price">
-                            { product.minPrice == product.maxPrice && (
+                            
+                            { product.minPrice == product.maxPrice && !selectedProduct && (
                                 <>
                                     <span className="price">
                                         { CommonUtil.formatMoney(product.maxPrice) }
@@ -148,7 +163,7 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                                 </>
                             )}
                             {
-                                product.minPrice < product.maxPrice &&(
+                                product.minPrice < product.maxPrice && !selectedProduct &&(
                                     <>
                                         <span className="price">
                                             { CommonUtil.formatMoney(product.minPrice) }
@@ -158,6 +173,13 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
                                             { CommonUtil.formatMoney(product.maxPrice) }
                                         </span>
                                     </>
+                                )
+                            }
+                            {
+                                selectedProduct && (
+                                    <span className="price">
+                                        { CommonUtil.formatMoney(selectedProduct.finalPrice) }
+                                    </span>
                                 )
                             }
                         </div>
@@ -241,8 +263,9 @@ const ProductQuickView = (props: IProductQuickViewProps) => {
     )
 }
 
-const mapStateToProps = ({  }: IRootState) => ({
-
+const mapStateToProps = ({ authentication }: IRootState) => ({
+    isLoginSuccess: authentication.isLoginSuccess,
+    isAuthenticated: authentication.isAuthenticated
 });
 
 const mapDispatchToProps = {

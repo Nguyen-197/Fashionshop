@@ -34,7 +34,7 @@ const Navigation = (props: INavigationProps) => {
                 <div className="container">
                     <ul className="navigation-list">
                         <li className={classNames("account-link line-hover", {
-                            active: getMenuActive("/account/profile")
+                            active: getMenuActive("/account-info")
                         })}>
                             <Link to="/account-info">Tài khoản của tôi</Link>
                         </li>

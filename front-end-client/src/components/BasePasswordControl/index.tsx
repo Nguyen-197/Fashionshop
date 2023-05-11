@@ -32,7 +32,7 @@ const TextControl = forwardRef((props: IPasswordControlProps, ref: any) => {
 
 return (
     <>
-        {props.labelKey ? <label className={`control-label ${props.required ? 'required' : ''}`} htmlFor={props.property}>{props.labelKey}</label> : ''}
+        {props.labelKey ? <label className={`control-label mr-3 ${props.required ? 'required' : ''}`} htmlFor={props.property}>{props.labelKey}</label> : ''}
         <div className='form-control-wrap'>
             <Password
                 {...restProps}

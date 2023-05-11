@@ -7,6 +7,7 @@ import { ProductDetailModel } from 'src/models/ProductDetailModel';
 import favoriesServices from 'src/services/favories.services';
 import { CartItemModel } from 'src/models/CartModel';
 import { ProductItem } from 'src/models/Product';
+import { Storage } from 'react-jhipster';
 import _ from 'lodash';
 import { Toast } from 'src/components/toast/toast.utils';
 
@@ -49,20 +50,17 @@ export function CartProvider(props: ICartProps) {
     }
 
     useEffect(()=>{
+        const token = Storage.local.get('token');
         const fetchData = async () => {
-            if (userInfo) {
+            console.log("userInfo", userInfo);
+            
+            if (token && userInfo && Object.keys(userInfo).length > 0) {
                 await fetchDataCart();
                 await fetchDataWishList();
             } else {
-                if (CommonUtil.getLocalStorage('cart-items')) {
-                    setCartItems(JSON.parse(CommonUtil.getLocalStorage('cart-items')));
-                }
-                if (CommonUtil.getLocalStorage('wish-list')) {
-                    setWishListItems(JSON.parse(CommonUtil.getLocalStorage('wish-list')));
-                }
-                if (CommonUtil.getLocalStorage('total')) {
-                    setTotal(JSON.parse(CommonUtil.getLocalStorage('total')));
-                }
+                setCartItems(CommonUtil.getLocalStorage('cart-items') ? JSON.parse(CommonUtil.getLocalStorage('cart-items')) : [])
+                setWishListItems(CommonUtil.getLocalStorage('wish-list') ? JSON.parse(CommonUtil.getLocalStorage('wish-list')) : [])
+                setTotal(CommonUtil.getLocalStorage('total') ? JSON.parse(CommonUtil.getLocalStorage('total')) : 0)
             }
         }
         fetchData();

@@ -8,6 +8,7 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { STATUS_ORDER } from 'src/@types/enums';
 import { STATUS_ORDERS } from 'src/constants';
 import orderServices from 'src/services/order.services';
+import { Storage } from 'react-jhipster';
 import { CommonUtil } from 'src/utils/common-util';
 import _ from 'lodash';
 import PurchaseList from './purchase-list';
@@ -31,10 +32,18 @@ const Purchase = (props: IPurchaseProps) => {
             const rest = await orderServices.getOrderByStatus(_stateActive);
             setPurchases (rest.data.data);
         }
-        setStateActive(Number(state));
-        fetchData();
+        const token = Storage.local.get('token');
+        if (token) {
+            setStateActive(Number(state));
+            fetchData();
+        } 
+        // else {
+        //     history.push('/login');
+        // }
     }, [state]);
-
+    useEffect(() => {
+        
+    }, [props.isAuthenticated]);
     const onTabChange = (event) => {
         history.push(`/purchase?state=${event.index}`);
     }
@@ -85,6 +94,7 @@ const Purchase = (props: IPurchaseProps) => {
 
 const mapStateToProps = ({ authentication }: IRootState) => ({
     isLoginSuccess: authentication.isLoginSuccess,
+    isAuthenticated: authentication.isAuthenticated
 });
 
 const mapDispatchToProps = {

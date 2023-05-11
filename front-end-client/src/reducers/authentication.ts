@@ -69,6 +69,8 @@ export default (state: AuthenticationState = initialState, action: ActionEntity)
         action,
         null,
         () => {
+            console.log("accountInfo", action);
+            
             CommonUtil.assignState(state, {
                 action: ActionType.Success,
                 accountInfo: action.payload?.data?.data || {}

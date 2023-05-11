@@ -29,6 +29,7 @@ const Header = (props: IHeaderProps) => {
     const location = history.location.pathname;
     const [treeDataCategory, setTreeDataCategory] = useState([]);
     const [scrolled, setScrolled] = useState(false);
+    const [isToggleIcon, setIsToggleIcon] = useState(false);
     const [whiteBox, setWhiteBox] = useState(false);
     const [disableBox, setDisableBox] = useState(false);
     const [dropdownHover, setDropdownHover] = useState(false);
@@ -101,6 +102,8 @@ const Header = (props: IHeaderProps) => {
     useEffect(() => {
         const token = Storage.local.get('token');
         if (token) {
+            console.log("token", token);
+            
             const fetchData = async () => {
                 try {
                     const userInfo = await accountServices.getUserInfo();
@@ -184,9 +187,34 @@ const Header = (props: IHeaderProps) => {
                         <span id="cart_count">{ totalCart }</span>
                     </div>
                     <div className="user_block">
-                        <Link to={`${userInfo ? '/purchase?state=0' : '/login'}`}>
+                        <Link to={'/purchase?state=0'}>
                             <AiIcon.AiOutlineUser className="icons" />
                         </Link>
+                    </div>
+                </div>
+                <div className='btn-toggle relative' onClick={() => setIsToggleIcon(!isToggleIcon)}>
+                    <i className={isToggleIcon ? 'fa fa-align-right' : 'fa fa-align-justify'}></i>
+                    <div className={isToggleIcon ? 'overlay-menu active' : 'overlay-menu'}>
+                        <ul>
+                            {
+                            headerMenu.map((item, index)=> {
+                                return (
+                                    <MenuItemDropdown
+                                        handleClick={handleClick}
+                                        dropdownHover={dropdownHover}
+                                        scrolled={scrolled}
+                                        location={location}
+                                        key={index}
+                                        whiteText={false}
+                                        label={item.label}
+                                        url={item.url}
+                                        dropdownContent={item.dropdownContent}
+                                        className={`menu-item ${item.classNames ? item.classNames : ''}`}
+                                    />
+                                )
+                            })
+                        }
+                        </ul>
                     </div>
                 </div>
                 { opendCart && <QuickCart

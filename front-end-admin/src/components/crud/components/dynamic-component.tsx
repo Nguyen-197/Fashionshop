@@ -17,7 +17,7 @@ import InputSwitchControl from '../control-field/input-switch-control';
 import MultiSelectControl from '../control-field/multi-select-control';
 import ArrayFormCustomComponent from './array-form-custom-component';
 import SubFromComponent from './sub-form-component';
-
+import { useEffect } from 'react';
 type IDynamicComponentProps = {
     setting: CrudFormSetting,
     updateStateField?: (fieldName: string, value: any) => void,
@@ -33,9 +33,14 @@ const DynamicComponent = (props: IDynamicComponentProps) => {
         props.updateStateField && props.updateStateField(fieldName, value);
         props.onChange && props.onChange(_temp);
     }
-
+    useEffect(() => {
+       console.log("props", props);
+       
+    }, []);
     const renderDynamicControlField = (field: any) => {
         const defaultValue = _.get(props.formik?.values, field.field) || '';
+        console.log("field.formControlType", field.formControlType);
+        
         if (field.formControlType == 'textbox') {
             return <TextControl {...props} {...field} fieldName={field.field} defaultValue={defaultValue} updateStateElement={updateStateElement} fieldPath={field.field} />
         } else if (field.formControlType == 'password' && field.show == true) {
@@ -74,6 +79,8 @@ const DynamicComponent = (props: IDynamicComponentProps) => {
                 {
                     listFields.map((item: CrudFormControl, idx: number) => {
                         if ((!item.checkShowControl || item.checkShowControl(item, props.formik.values, idx) && item.show)) {
+                            console.log("key", item.formControlType + "_" + idx);
+                            
                             if (item.formControlType == 'subForm') {
                                 return <SubFromComponent key={`${item.formControlType}_${idx}`} index={idx} noNeededController={true}
                                     fieldControl={item} formik={props.formik}

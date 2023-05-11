@@ -312,7 +312,7 @@ const ProductContent = (props: IProductContentProps) => {
                                     <div className="list-item">
                                         { colorList.map(item => {
                                             return (
-                                                <div className={classNames("item", { 'active': activeColor == item.id })} key={item.code} onClick={() => setActiveColor(item.id)}>
+                                                <div className={classNames("item", { 'active': activeColor == item.id })} key={item.code} onClick={() => {setActiveColor(item.id); setCountCart(1)}}>
                                                     {item.name}
                                                     { activeColor == item.id && <div className="product-variation__tick">
                                                         <AiIcon.AiOutlineCheck className="icon" />
@@ -327,7 +327,7 @@ const ProductContent = (props: IProductContentProps) => {
                                     <div className="list-item">
                                         { sizeList.map(item => {
                                             return (
-                                                <div className={classNames("item", { 'active': activeSize == item.id })} key={item.code} onClick={() => setActiveSize(item.id)}>
+                                                <div className={classNames("item", { 'active': activeSize == item.id })} key={item.code} onClick={() => { setActiveSize(item.id) ; setCountCart(1)}}>
                                                     {item.name}
                                                     { activeSize == item.id && <div className="product-variation__tick">
                                                         <AiIcon.AiOutlineCheck className="icon" />
@@ -345,7 +345,7 @@ const ProductContent = (props: IProductContentProps) => {
                                         </div>
                                         <div className="count-cart-item text flex-center">
                                             <form onSubmit={(e) => e.preventDefault()}>
-                                                <InputNumber mode="decimal" min={1} useGrouping={false} value={countCart} onValueChange={(e) => setCountCart(e.value)} />
+                                                <InputNumber mode="decimal" min={1} max={selectedProduct?.quantity ?? 1000} useGrouping={false} value={countCart} onValueChange={(e) => setCountCart(e.value)} />
                                             </form>
                                         </div>
                                         <div className="count-cart-item right flex-center">
@@ -384,7 +384,7 @@ const ProductContent = (props: IProductContentProps) => {
                                 <div className="row">
                                     { similarProduct.map((product) => {
                                         return (
-                                            <div key={product.id} className="col-3">
+                                            <div key={product.id} className="col-xl-3 col-lg-4 col-md-6 col-sm-12 ">
                                                 <Product key={product.id} product={product}/>
                                             </div>
                                         )

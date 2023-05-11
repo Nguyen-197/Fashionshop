@@ -386,7 +386,7 @@ const mapDispatchToProps = {
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;
-export const Logined = connect(
+export const  Logined = connect(
     mapStateToProps,
     mapDispatchToProps
 )(LoginedComponent);

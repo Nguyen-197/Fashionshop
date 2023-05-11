@@ -222,6 +222,7 @@ label.country-label {
     color: #000;
     transition: all 350ms ease-out;
     text-decoration: none;
+    white-space: nowrap;
 }
 .menu-item:hover a {
     color: var(--primary-colors);
@@ -873,6 +874,11 @@ a.active::after {
     padding: 40px;
     border: 2px solid #f1f2f4;
     margin: 0 2px;
+}
+.woocommerce-content label{
+    max-width: 100px;
+    width: 100%;
+    text-align: right;
 }
 .product-item {
     overflow: hidden;
@@ -2375,10 +2381,6 @@ img {
     color: var(--primary-colors);
     font-weight: 500;
 }
-.form-control-wrap .p-inputtext {
-    padding: 0.4rem 0.75rem;
-    border-radius: unset;
-}
 .required::after {
     content: "*";
     color: red;
@@ -2452,7 +2454,7 @@ img {
     margin: 0 15px;
     background-color: #fff;
 }
-.layout-v2 .purchase-wrap {
+.layout-v2 .purchase-wrap, .layout-v2 .woocommerce-account {
     flex: 7;
     margin: 0 15px;
     background-color: #fff;
@@ -2890,6 +2892,9 @@ img {
 .ic-up {
     transform: rotate(90deg);
 }
+#sectionInfoFooter {
+    margin-top: 64px;
+}
 #sectionInfoFooter .container-fluid,
 #footerBottom .container-fluid,
 .bottomBar .container-fluid,
@@ -3267,9 +3272,68 @@ button.button:before {
 .box-login .sign:hover {
     text-decoration: underline;
 }
-
-
-
+.btn-toggle {
+    display: none;
+}
+.overlay-menu {
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 60px);
+}
+.btn-toggle .menu-item{
+    justify-content: center;
+    font-size: 21px;
+}
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .header-logo {
+        grid-column: 1/4
+    }
+    .menu {
+        grid-column: 4/9
+    }
+    .overlay-menu {
+        position: absolute;
+        top: 60px;
+        right: -16px;
+        opacity: 0;
+        width: 100vw;
+        /* height: calc(100vh - 60px); */
+        height: 0;
+        background: #fff;
+        transition: all ease-in-out 0.3s;
+    }
+    .overlay-menu.active{
+        height: calc(100vh - 60px);
+        opacity: 1;
+        transition: all ease-in-out 0.3s;
+    }
+    .banner-container {
+        height: 50vh;
+    }
+}
+@media (max-width: 900px) {
+    .header_wrap {
+        padding: 0 16px 0 32px;
+    }
+    .menu {
+        display: none;
+    }
+    .header-right {
+        grid-column: 9/12;
+        justify-content: center;
+    }
+    .btn-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        padding: 16px;
+    }
+    .banner-container {
+        height: 40vh;
+    }
+}
 /* ANIMATION */
 .slide-out-blurred-left {
 	-webkit-animation: slide-out-blurred-left 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;

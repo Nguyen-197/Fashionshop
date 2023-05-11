@@ -10,7 +10,12 @@
             "404": "Page not found"
         },
         "invalid_information": "Thông tin không hợp lệ",
-        "otp_invalid": "Mã OTP không hợp lệ"
+        "otp_invalid": "Mã OTP không hợp lệ",
+        "exist": {
+            "userEmail": "Email đã được sử dụng",
+            "userPhone": "Số điện thoại đã được sử dụng"
+        },
+        "password.notMath": "Mật khẩu hiện tại không chính xác"
     },
     "invalidToken": "Invalid Token!",
     "common": {
@@ -86,7 +91,8 @@
                 "verify": "Tài khoản hoặc mật khẩu không chính xác"
             }
         },
-        "common.cancel.success": "Đơn hàng hủy thành công"
+        "common.cancel.success": "Đơn hàng hủy thành công",
+        "changePassword.success": "Đổi mật khẩu thành công"
     },
     "share": {
         "logout": "Đăng xuất",

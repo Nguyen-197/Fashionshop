@@ -15,7 +15,9 @@ public class UserForm {
     private String fullName;
 
     private String password;
-
+    
+    private String newPassword;
+    
     private String email;
 
     private Boolean active;

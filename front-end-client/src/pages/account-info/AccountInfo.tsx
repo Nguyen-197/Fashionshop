@@ -3,10 +3,17 @@ import { IRootState } from 'src/reducers';
 import { useHistory, Link } from 'react-router-dom';
 import Navigation from 'src/components/layouts/Navigation';
 import { InputText } from 'primereact/inputtext';
+import BasePasswordControl from 'src/components/BasePasswordControl';
+import { Button } from 'primereact/button';
 import { useFormik } from 'formik';
 import _ from 'lodash';
-import { Password } from 'primereact/password';
+import * as yup from 'yup';
+import accountServices from 'src/services/account.services';
 import LayoutCheckout from 'src/components/layouts/LayoutCheckout';
+import { useEffect, useContext } from 'react';
+import { UserContext } from 'src/context/user';
+import { CommonUtil } from 'src/utils/common-util';
+import { RESPONSE_TYPE} from 'src/@types/enums';
 type IAccountInfoProps = StateProps & DispatchProps & {
 }
 const MENU = [
@@ -38,25 +45,49 @@ const MENU = [
 ];
 const AccountInfo = (props: IAccountInfoProps) => {
     const history = useHistory();
+    const { userInfo } = useContext(UserContext);
     const { values, touched, errors, setErrors, setFieldValue, handleSubmit } = useFormik({
         initialValues: {
-            name: "",
-            email: ""
         },
         onSubmit: async (data: any) => {
-
-        }
+            await onSubmit(data);
+        },
+        validationSchema: yup.object().shape({  
+            password: yup.string().min(6).max(200).required(),
+            newPassword: yup.string().min(6).max(200).required(),
+            passwordConfirmation: yup.string().oneOf([yup.ref('newPassword'), null], 'Mật khẩu xác nhận không trùng khớp'),
+        }),
+        validateOnMount: false
     });
+    const onSubmit = async (data) => {
+        const dataTemp = _.cloneDeep(data);
+        dataTemp['email'] = userInfo?.email
+        accountServices.changePassword(dataTemp).then((resp) => {
+            if(resp.data.type == RESPONSE_TYPE.SUCCESS) {
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 1000);
+            }
+        })
+    }
+    const onChange = async (fieldName: string, evt: any, value: any) => {
+        await setFieldValue(fieldName, value ?? null);
+    };
+    useEffect(() => {
+        console.log("userInfo",userInfo);
+        
+    }, [])
     return (
         <>
-            <div style={{ paddingTop: 100 }}>
+            <div style={{ paddingTop: 100, backgroundColor: '#F5F5F5' }}>
                 <LayoutCheckout>
                     <>
+                    <div className="layout-v2">
                         <Navigation />
                         <div className="woocommerce-account">
                             <main className="container site-main">
                                 <div className="row">
-                                    <div className="col-3">
+                                    {/* <div className="col-3">
                                         <nav className="woocommerce-navigation">
                                             <ul>
                                                 {
@@ -70,46 +101,81 @@ const AccountInfo = (props: IAccountInfoProps) => {
                                                 }
                                             </ul>
                                         </nav>
-                                    </div>
-                                    <div className="col-9">
-                                        <div className="woocommerce-content">
-                                            <form>
-                                                <h3>Account Details</h3>
-                                                <div className="sb-account-details">
-                                                    <div className="row">
-                                                        <div className="col-6">
-                                                            <label htmlFor="name">Name</label>
-                                                            <InputText id="name" value={_.get(values, 'name')} />
-                                                        </div>
-                                                        <div className="col-6">
-                                                            <label htmlFor="email">Email</label>
-                                                            <InputText id="email" value={_.get(values, 'email')} />
-                                                        </div>
+                                    </div> */}
+                                    <div className="woocommerce-content p-4">
+                                        <h3>Thông tin tài khoản</h3>
+                                        <div className="sb-account-details">
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    <label htmlFor="name" className='mr-3'>Họ và Tên</label>
+                                                    <InputText disabled id="name" className='p-inputtext-sm' value={userInfo?.fullName ?? ''} />
+                                                </div>
+                                                <div className="col-6">
+                                                    <label htmlFor="email" className='mr-3'>Email</label>
+                                                    <InputText disabled id="email" className='p-inputtext-sm' value={userInfo?.email ?? ''} />
+                                                </div>
+                                                <div className="col-6">
+                                                    <label htmlFor="phone" className='mr-3'>Số điện thoại</label>
+                                                    <InputText disabled id="phone" className='p-inputtext-sm' value={userInfo?.phoneNumber ?? ''} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3>Thay đổi mật khẩu</h3>
+                                            <form  id="user-form" onSubmit={(event) => CommonUtil.focusOnSubmitError(event, handleSubmit)}>
+                                                <div className="row">
+                                                    <div className="col-12 d-flex">
+                                                        <BasePasswordControl
+                                                            labelKey='Mật khẩu cũ'
+                                                            property='password'
+                                                            className='p-inputtext-sm'
+                                                            errors={errors}
+                                                            touched={touched}
+                                                            required={true}
+                                                            feedback={false}
+                                                            toggleMask 
+                                                            initialValue={_.get(values, 'password')}
+                                                            callbackValueChange={onChange}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 d-flex">
+                                                        <BasePasswordControl
+                                                            labelKey='Mật khẩu mới'
+                                                            property='newPassword'
+                                                            className='p-inputtext-sm'
+                                                            errors={errors}
+                                                            touched={touched}
+                                                            required={true}
+                                                            toggleMask
+                                                            initialValue={_.get(values, 'newPassword')}
+                                                            callbackValueChange={onChange}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 d-flex">
+                                                        <BasePasswordControl
+                                                            labelKey='Xác nhận lại mật khẩu'
+                                                            property='passwordConfirmation'
+                                                            className='p-inputtext-sm'
+                                                            errors={errors}
+                                                            touched={touched}
+                                                            required={true}
+                                                            initialValue={_.get(values, 'passwordConfirmation')}
+                                                            callbackValueChange={onChange}
+                                                        />
                                                     </div>
                                                 </div>
-                                                <h3>Password Change</h3>
-                                                <fieldset>
-                                                    <div className="row">
-                                                        <div className="col-12">
-                                                            <label htmlFor="password">Current password</label>
-                                                            <Password id="password" value={_.get(values, 'password')} feedback={false} />
-                                                        </div>
-                                                        <div className="col-12">
-                                                            <label htmlFor="newPassword">New password</label>
-                                                            <Password id="newPassword" value={_.get(values, 'newPassword')} />
-                                                        </div>
-                                                        <div className="col-12">
-                                                            <label htmlFor="confirmPassword">Confirm new password</label>
-                                                            <Password id="confirmPassword" value={_.get(values, 'confirmPassword')} />
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
                                             </form>
-                                        </div>
+                                            <div className='d-flex justify-content-end w-100'>
+                                                <Button
+                                                    type="submit"
+                                                    form="user-form"
+                                                    label="Thay đổi"
+                                                />
+                                            </div>
                                     </div>
                                 </div>
                             </main>
                         </div>
+                    </div>
                     </>
                 </LayoutCheckout>
             </div>
@@ -118,7 +184,7 @@ const AccountInfo = (props: IAccountInfoProps) => {
 }
 
 const mapStateToProps = ({ authentication }: IRootState) => ({
-    isLoginSuccess: authentication.isLoginSuccess,
+    isLoginSuccess: authentication.isLoginSuccess
 });
 
 const mapDispatchToProps = {

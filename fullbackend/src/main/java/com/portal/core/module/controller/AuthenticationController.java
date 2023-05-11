@@ -4,6 +4,7 @@ package com.portal.core.module.controller;
 import com.portal.core.common.config.TokenProvider;
 import com.portal.core.common.exception.ValidateException;
 import com.portal.core.common.result.Response;
+import com.portal.core.common.utils.CommonUtils;
 import com.portal.core.module.dto.UserForm;
 import com.portal.core.module.dto.request.loginForm;
 import com.portal.core.module.dto.respon.LoginFormResponse;
@@ -66,6 +67,15 @@ public class AuthenticationController {
 	@RequestMapping(value = "/sign-in" , method = RequestMethod.POST)
 	public @ResponseBody Response signUp(@RequestBody UserForm userForm) throws ValidateException, Exception {
 		User user = new User();
+		user = userService.findByEmailOrPhoneNumber(userForm.getEmail());
+		if(!CommonUtils.isEmpty(user)) {
+			return Response.error("error.exist.userEmail");
+		}
+		user = userService.findByEmailOrPhoneNumber(userForm.getPhoneNumber());
+		if(!CommonUtils.isEmpty(user)) {
+			return Response.error("error.exist.userPhone");
+		}
+		user = new User();
 		user = userService.saveOrUpdate(user, userForm);
 		return Response.success("signup.success").withData(user);
 	}

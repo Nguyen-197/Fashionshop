@@ -21,7 +21,7 @@ type ILoginProps = StateProps & DispatchProps & {
 }
 
 const Login = (props: ILoginProps) => {
-    const { userInfo } = useContext(UserContext);
+    const { userInfo, setUserInfoFunc } = useContext(UserContext);
     const history = useHistory();
     const [loginMode, setLoginMode] = useState(true);
     useEffect(() => {
@@ -29,6 +29,7 @@ const Login = (props: ILoginProps) => {
         localStorage.clear();
         sessionStorage.clear();
         props.setAuthenticated(false);
+        setUserInfoFunc({})
         // clear cookie
         const cookies = document.cookie;
         for (let i = 0; i < cookies.split(";").length; ++i) {
@@ -45,6 +46,8 @@ const Login = (props: ILoginProps) => {
     useEffect(() => {
         if (props.isAuthenticated && props.isLoginSuccess) {
             history.push('/home');
+        } else {
+            history.push('/login');
         }
     }, [props.isLoginSuccess, props.isAuthenticated]);
 
@@ -55,7 +58,7 @@ const Login = (props: ILoginProps) => {
         <>  
             <BaseLayout>
                 <div>
-                    <Banner/>
+                    {/* <Banner/> */}
                     <div className="flex-center my-8">
                         {loginMode &&
                         <LoginForm 

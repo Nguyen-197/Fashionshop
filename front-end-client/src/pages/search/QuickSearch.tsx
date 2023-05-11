@@ -172,51 +172,29 @@ const QuickSearch = (props: IQuickSearchProps) => {
                         </form>
                     </div>
                     <div className="row">
-                        <div className="col-2">
-                            <h3>
-                                <i className="pi pi-filter-fill mr-3" style={{'fontSize': '0.9em'}}></i>
-                                Bộ lọc tìm kiếm
-                            </h3>
-                            <div>
-                                Lọc theo kích cỡ
-                            </div>
-                            <div className="tree-size">
-                                <Tree value={treeDataSize} selectionMode="checkbox" onExpand={loadOnExpand} loading={loading}
-                                    selectionKeys={selectedKeySize}
-                                    onSelectionChange={e => onChangeSize(e)}
-                                />
-                            </div>
-                            <div>
-                                Lọc theo màu
-                            </div>
-                            <div className="tree-size">
-                                <Tree value={treeDataColor} selectionMode="checkbox" onExpand={loadOnExpand} loading={loading}
-                                    selectionKeys={selectedKeyColor}
-                                    onSelectionChange={e => onChangeColor(e)}
-                                />
-                            </div>
-                        </div>
-                        <div className="col-10">
-                            <div className="search-results">
-                                { productSearch?.data?.length > 0 ?
-                                    <div className="row product-list">
-                                        { productSearch.data.map(item => {
-                                            return (
-                                                <div className="col-3" key={item.id}>
-                                                    <Product
-                                                        key={item.id}
-                                                        product={item}
-                                                    />
-                                                </div>
-                                            );
-                                        }) }
-                                    </div> : <span className="flex-center">Không có kết quả tìm kiếm</span>
-                                }
-                            </div>
-                            <div className="flex-center">
-                                { productSearch?.recordTotal > basicRows && <div className="">
-                                    <Paginator first={productSearch?.first|| 0} rows={basicRows} totalRecords={productSearch?.recordTotal || 0} onPageChange={onPageChange}></Paginator>
-                                </div> }
+                        <div className="container-fluid">
+                            <div className="container">
+                                <div className="search-results">
+                                    { productSearch?.data?.length > 0 ?
+                                        <div className="row product-list">
+                                            { productSearch.data.map(item => {
+                                                return (
+                                                    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12" key={item.id}>
+                                                        <Product
+                                                            key={item.id}
+                                                            product={item}
+                                                        />
+                                                    </div>
+                                                );
+                                            }) }
+                                        </div> : <span className="flex-center">Không có kết quả tìm kiếm</span>
+                                    }
+                                </div>
+                                <div className="flex-center">
+                                    { productSearch?.recordTotal > basicRows && <div className="">
+                                        <Paginator first={productSearch?.first|| 0} rows={basicRows} totalRecords={productSearch?.recordTotal || 0} onPageChange={onPageChange}></Paginator>
+                                    </div> }
+                                </div>
                             </div>
                         </div>
                     </div>

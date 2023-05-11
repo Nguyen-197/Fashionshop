@@ -71,12 +71,7 @@ const UserForm = forwardRef((props: IUserFormProps, ref: any) => {
         handleSubmit
     } = useFormik({
         initialValues: {
-            fullName: "",
-            email: "",
-            password: "",
-            phoneNumber: "",
-            active: true,
-            role: {},
+            active: true
         },
         onSubmit: async (data: any) => {
             await onSubmit(data);
@@ -90,7 +85,7 @@ const UserForm = forwardRef((props: IUserFormProps, ref: any) => {
             role: yup.object().shape({
                 id: yup.number().required(),
                 name: yup.string()
-            }),
+            })
         }),
         validateOnMount: false
     });
@@ -107,16 +102,11 @@ const UserForm = forwardRef((props: IUserFormProps, ref: any) => {
     );
     const onChange = async (fieldName: string, evt: any, value: any) => {
         await setFieldValue(fieldName, value ?? null);
-        if (evt) {
-            handleChange(evt);
-        }
     };
-    useEffect(() => {
-        console.log('values', values);
-
-    }, [values])
     const onSubmit = async (data) => {
         const dataTemp = _.cloneDeep(data);
+        console.log("dataTemp",dataTemp);
+        
         setFormData(dataTemp);
         await CommonUtil.confirmSaveOrUpdate(async () => {
             await UserService.saveOrUpdate(dataTemp).then((res) => {

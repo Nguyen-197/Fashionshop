@@ -37,11 +37,11 @@ const Login = (props: ILoginProps) => {
         validateOnMount: false
     });
 
-    useEffect(() => {
-        if (props.isAuthenticated && props.isLoginSuccess) {
-            history.push('/home');
-        }
-    }, [props.isLoginSuccess, props.isAuthenticated]);
+    // useEffect(() => {
+    //     if (props.isAuthenticated && props.isLoginSuccess) {
+    //         history.push('/home');
+    //     }
+    // }, [props.isLoginSuccess, props.isAuthenticated]);
 
     const onChange = async (fieldName: string, evt: any, value: any) => {
         await setFieldValue(fieldName, value ?? null);

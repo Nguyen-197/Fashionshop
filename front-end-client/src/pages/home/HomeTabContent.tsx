@@ -75,15 +75,6 @@ const HomeTabContent = (props: HomeTabContent) => {
         const listSize = selectedKeySize.slice()
         index >= 0 ? listSize.splice(index, 1) : listSize.push(e.value)
         setSelectedKeySize(listSize);
-        // setSelectedKeySize(e.value)
-        // const arr = Object.keys(e.value).filter(key => {
-        //     if(e.value[key].checked) {
-        //         return key
-        //     }
-        // })
-        // console.log(arr);
-        // const form = Object.assign({} , dataSearch , {listProductSize: [...arr]})
-        // setDataSearch(form)
     }
     const onChangeColor = (e) => {
         console.log(e);
@@ -92,14 +83,6 @@ const HomeTabContent = (props: HomeTabContent) => {
         const listColor = selectedKeyColor.slice()
         index >= 0 ? listColor.splice(index, 1) : listColor.push(e.value)
         setSelectedKeyColor(listColor);
-        // setSelectedKeyColor(e.value)
-        // const arr = Object.keys(e.value).filter(key => {
-        //     if(e.value[key].checked) {
-        //         return key
-        //     }
-        // })
-        // const form = Object.assign({} , dataSearch, {listProductColor: [...arr]})
-        // setDataSearch(form)
     }
     const hanlderFilter = () => {
         const form = {
@@ -208,7 +191,7 @@ const HomeTabContent = (props: HomeTabContent) => {
                     <div className="row">
                         { products?.data?.map((item, index) => {
                             return (
-                                <div className="col-3" key={item.id}>
+                                <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12" key={item.id}>
                                     <Product
                                         key={index}
                                         product={item}

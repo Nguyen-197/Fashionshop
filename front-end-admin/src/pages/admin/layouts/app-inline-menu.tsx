@@ -5,7 +5,7 @@ import { classNames } from 'primereact/utils';
 import { translate } from 'react-jhipster';
 import { useHistory } from 'react-router';
 import { IRootState } from '../../../reducers';
-
+import { useEffect } from 'react';
 type IAppInlineMenuProps = StateProps & DispatchProps & {
     menuMode: any,
     activeInlineProfile: any,
@@ -14,6 +14,10 @@ type IAppInlineMenuProps = StateProps & DispatchProps & {
 
 const AppInlineMenu = (props: IAppInlineMenuProps) => {
     const history = useHistory();
+    useEffect(() => {
+        console.log(">>>>> test", props.accountInfo);
+        
+    }, []);
     const isSlim = () => {
         return props.menuMode === 'slim';
     }
@@ -72,6 +76,7 @@ const AppInlineMenu = (props: IAppInlineMenuProps) => {
 const mapStateToProps = ({ locale, authentication }: IRootState) => ({
     currentLocale: locale.currentLocale,
     accountInfo: authentication.accountInfo,
+    a:authentication,
 
 });
 

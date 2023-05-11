@@ -237,8 +237,8 @@ const CheckoutIndex = (props: ICheckoutIndexProps) => {
                     const formData = {
                         orderId: restOrderData.id,
                         amount: restOrderData.customerPay,
-                        description: '>>>>> KhaiNQ...',
-                        bankCode: 'NCB'
+                        description: '>>>>> NguyenNK check',
+                        bankCode: 'VNBANK'
                     }
                     const paymentRest = await paymentServices.processPayment(formData);
                     if (paymentRest.data.type == RESPONSE_TYPE.SUCCESS) {
